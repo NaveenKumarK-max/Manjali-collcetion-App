@@ -1,0 +1,83 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-network-information@3.0.0",
+      "D:\\ionic3\\SriVenkateshwari_collection_app\\Android_11"
+    ]
+  ],
+  "_development": true,
+  "_from": "cordova-plugin-network-information@3.0.0",
+  "_id": "cordova-plugin-network-information@3.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-bBtP3PxIX8vshsfR0+F6co2e2cFLgjt18yKIdigzMwk6ANudWQ72RB3g2qMPyT6fBDWmUyE1Qd+bKQB/fZtQwQ==",
+  "_location": "/cordova-plugin-network-information",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-network-information@3.0.0",
+    "name": "cordova-plugin-network-information",
+    "escapedName": "cordova-plugin-network-information",
+    "rawSpec": "3.0.0",
+    "saveSpec": null,
+    "fetchSpec": "3.0.0"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-network-information/-/cordova-plugin-network-information-3.0.0.tgz",
+  "_spec": "3.0.0",
+  "_where": "D:\\ionic3\\SriVenkateshwari_collection_app\\Android_11",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/apache/cordova-plugin-network-information/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-network-information",
+    "platforms": [
+      "android",
+      "ios",
+      "windows",
+      "browser"
+    ]
+  },
+  "description": "Cordova Network Information Plugin",
+  "devDependencies": {
+    "@cordova/eslint-config": "^3.0.0"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "3.0.0": {
+        "cordova": ">=9"
+      },
+      "4.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "homepage": "https://github.com/apache/cordova-plugin-network-information#readme",
+  "keywords": [
+    "cordova",
+    "network",
+    "information",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-windows",
+    "cordova-browser"
+  ],
+  "license": "Apache-2.0",
+  "name": "cordova-plugin-network-information",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-network-information.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint"
+  },
+  "types": "./types/index.d.ts",
+  "version": "3.0.0"
+}

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-cashfree-pg" version="1.0.6" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>CFPaymentGateway</name>
+    <js-module name="CFPaymentGateway" src="dist/CFPaymentGateway.js">
+        <clobbers target="CFPaymentGateway"/>
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="CFPaymentGateway">
+                <param name="ios-package" value="CFPaymentGateway"/>
+            </feature>
+        </config-file>
+        <source-file src="src/ios/CFPaymentGateway.swift"/>
+        <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
+
+        <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+            <array>
+                <string>phonepe</string>
+                <string>tez</string>
+                <string>paytmmp</string>
+                <string>bhim</string>
+            </array>
+        </config-file>
+        <config-file target="*-Info.plist" parent="LSApplicationCategoryType">
+        </config-file>
+        <framework src="CashfreePG" type="podspec" spec="~>2.0.9"/>
+    </platform>
+    <platform name="android">
+        <framework custom="true" src="src/android/CashfreePGSDK.gradle" type="gradleReference"/>
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="CFPaymentGateway">
+                <param name="android-package" value="com.cashfree.pg.cordova.CFPaymentGateway"/>
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"/>
+        <source-file src="src/android/CFPaymentGateway.java"
+                     target-dir="src/com/cashfree/pg/cordova"/>
+    </platform>
+</plugin>

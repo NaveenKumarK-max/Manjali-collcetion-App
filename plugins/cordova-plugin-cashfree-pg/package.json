@@ -1,0 +1,75 @@
+{
+  "_from": "cordova-plugin-cashfree-pg@1.0.6",
+  "_id": "cordova-plugin-cashfree-pg@1.0.6",
+  "_inBundle": false,
+  "_integrity": "sha512-GA4qNRORBrMpPE/wz6tQevDNW2ZbbcLhdVVjlPdNvBX5hGcx8sQNKwVcwhFZzdXis38ot+lh+ErPIbe5FGuNtg==",
+  "_location": "/cordova-plugin-cashfree-pg",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-cashfree-pg@1.0.6",
+    "name": "cordova-plugin-cashfree-pg",
+    "escapedName": "cordova-plugin-cashfree-pg",
+    "rawSpec": "1.0.6",
+    "saveSpec": null,
+    "fetchSpec": "1.0.6"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-cashfree-pg/-/cordova-plugin-cashfree-pg-1.0.6.tgz",
+  "_shasum": "fdb089d07039afe89a85506b261e452c6c5b064d",
+  "_spec": "cordova-plugin-cashfree-pg@1.0.6",
+  "_where": "D:\\CRM_Collection_App\\Manjali",
+  "author": {
+    "name": "Cashfree Developers",
+    "email": "developer@cashfree.com",
+    "url": "https://cashfree.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/cashfree/cordova-plugin-cashfree/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-cashfree-pg",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {
+    "cashfree-pg-api-contract": "^2.0.5"
+  },
+  "deprecated": false,
+  "description": "Cordova/Ionic/Phonegap plugin for Cashfree's Mobile payments SDKs",
+  "devDependencies": {
+    "@types/node": "^18.6.4",
+    "typescript": "^4.1.3"
+  },
+  "homepage": "https://github.com/cashfree/cordova-plugin-cashfree#readme",
+  "keywords": [
+    "cashfree",
+    "ecosystem:cordova",
+    "cordova",
+    "phonegap",
+    "ionic",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-plugin-cashfree-pg"
+  ],
+  "license": "ISC",
+  "main": "dist/CFPaymentGateway.js",
+  "name": "cordova-plugin-cashfree-pg",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cashfree/cordova-plugin-cashfree.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "types": "dist/CFPaymentGateway.d.ts",
+  "version": "1.0.6"
+}

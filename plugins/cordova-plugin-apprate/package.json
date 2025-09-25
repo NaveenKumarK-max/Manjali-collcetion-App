@@ -1,0 +1,46 @@
+{
+  "_from": "cordova-plugin-apprate",
+  "_id": "cordova-plugin-apprate@1.8.0",
+  "_inBundle": false,
+  "_integrity": "sha512-9Dfzp77/yoEucWMt1xo1okYSfoECMMQR8Bg7Dkj/b5qM3rStNOg/0AjojASRgj6ubOPD/0EgRVfWNGsfM5yJJA==",
+  "_location": "/cordova-plugin-apprate",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-apprate",
+    "name": "cordova-plugin-apprate",
+    "escapedName": "cordova-plugin-apprate",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-apprate/-/cordova-plugin-apprate-1.8.0.tgz",
+  "_shasum": "418e9c230495d842cfe2d5d07f73fac10aa771e9",
+  "_spec": "cordova-plugin-apprate",
+  "_where": "D:\\CRM_Collection_App\\Manjali",
+  "bugs": {
+    "url": "https://github.com/pushandplay/cordova-plugin-apprate/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "<a href=\"https://badge.fury.io/js/cordova-plugin-apprate\" target=\"_blank\"><img height=\"21\" style='border:0px;height:21px;' border='0' src=\"https://badge.fury.io/js/cordova-plugin-apprate.svg\" alt=\"NPM Version\"></a> <a href='https://www.npmjs.org/package/cordova-plugin-apprate' target='_blank'><img height='21' style='border:0px;height:21px;' src='https://img.shields.io/npm/dt/cordova-plugin-apprate.svg?label=NPM+Downloads' border='0' alt='NPM Downloads' /></a>",
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-cordovacli": "*"
+  },
+  "homepage": "https://github.com/pushandplay/cordova-plugin-apprate#readme",
+  "main": "./typings/index.js",
+  "name": "cordova-plugin-apprate",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pushandplay/cordova-plugin-apprate.git"
+  },
+  "types": "./typings/index.d.ts",
+  "version": "1.8.0"
+}

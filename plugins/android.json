@@ -1,0 +1,102 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-market": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-x-toast": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-datepicker": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-camera": {
+      "ANDROIDX_CORE_VERSION": "1.6.+",
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "com-badrit-base64": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-bluetooth-serial": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "com.razorpay.cordova": {
+      "PACKAGE_NAME": "com.svjc.wincrm"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.lmx.mjadmn"
+    },
+    "cordova-sms-plugin": {
+      "PACKAGE_NAME": "com.lmx.mjadmn"
+    },
+    "cordova-plugin-apprate": {
+      "PLAY_REVIEW_VERSION": "2.+",
+      "PACKAGE_NAME": "com.lmx.mjadmn"
+    },
+    "cordova-plugin-geolocation": {
+      "GPS_REQUIRED": "true",
+      "PACKAGE_NAME": "com.lmx.mjadmn"
+    },
+    "cordova-plugin-nativegeocoder": {
+      "PACKAGE_NAME": "com.lmx.mjadmn"
+    },
+    "cordova-plugin-request-location-accuracy": {
+      "PLAY_SERVICES_LOCATION_VERSION": "16.+",
+      "PACKAGE_NAME": "com.lmx.mjadmn"
+    },
+    "cordova-plugin-googleplus": {
+      "PLAY_SERVICES_VERSION": "15.0.1",
+      "PACKAGE_NAME": "com.lmx.mjadmn"
+    },
+    "cordova-plugin-cashfree-pg": {
+      "PACKAGE_NAME": "com.lmx.mjadmn"
+    }
+  },
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.lmx.mjadmn"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.lmx.mjadmn"
+    },
+    "cordova-plugin-nativestorage": {
+      "PACKAGE_NAME": "com.lmx.mjadmn"
+    }
+  }
+}
