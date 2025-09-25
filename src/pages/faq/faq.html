@@ -1,0 +1,89 @@
+<!--
+  Generated template for the FaqPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>FAQ</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <!--     <ion-row>
+        <ion-col no-padding style="text-align: center;">
+            <ion-icon style="font-size: 2.4em !important;color:#ffab08 !important" name="help-circle">
+            </ion-icon>
+
+        </ion-col>
+    </ion-row>
+    <h6 style="text-align: center;">FAQ</h6>
+
+    <ion-item>
+
+        <ion-item style="border: 1px solid lightgrey;border-radius: 5px ;margin-bottom: 10px !important;">
+
+            <b>What is Online Purchase Plan?</b>
+            <ion-item>
+                Online Purchase Plan is for Joining and pay Purchase Plan through online payment system. Using Debit card, Net banking and wallets due can be paid.
+            </ion-item>
+        </ion-item>
+        <ion-item style="border: 1px solid lightgrey;border-radius: 5px ;margin-bottom: 10px !important;">
+            <b>Do the joining a Purchase Plan and payment can be done only through online?</b>
+            <ion-item>
+                Customer could join and pay through online and offline in our showroom.<br/> Online Payment modes: Credit / Debit card, Net banking and Wallets.<br/> Showroom customer: Cash/Cheque/DD/ECS/Credit Card/Debit Card.
+            </ion-item>
+        </ion-item>
+        <ion-item style="border: 1px solid lightgrey;border-radius: 5px ;margin-bottom: 10px !important;">
+            <b> Is it possible for a customer to join multiple Purchase Plans? </b>
+            <ion-item>
+                Yes. A customer could join multiple Purchase Plans and payment can be made through online/offline.
+            </ion-item>
+        </ion-item>
+        <ion-item style="border: 1px solid lightgrey;border-radius: 5px ;margin-bottom: 10px !important;">
+            <b>Do the Online Purchase Plan only for new Purchase Plan joining & payment?</b>
+            <ion-item>
+                No, New and existing customers could pay Online by registering with their respective details as follows<br/> Existing customer: Person who is having Purchase Plan with {{companyName}} already referred to as “Existing Customer”. Those existing
+                customers could register online with their Purchase Plan Number provided by {{companyName}}.
+            </ion-item>
+        </ion-item>
+        <ion-item style="border: 1px solid lightgrey;border-radius: 5px ;margin-bottom: 10px !important;">
+            <b> Do {{companyName}} supplies any receipt for Online payment?</b>
+            <ion-item>
+                Yes, E-receipt could be generated at your Online Dash Board. SMS & Email confirmation also will be provided by {{companyName}} for each transactions. Customers could print the E Receipt for further reference.
+            </ion-item>
+        </ion-item>
+        <ion-item style="border: 1px solid lightgrey;border-radius: 5px ;margin-bottom: 10px !important;">
+            <b>Do any additional charges applicable for online payment?</b>
+            <ion-item>
+                No, any additional charges will not be collected apart from your savings amount with {{companyName}}.
+            </ion-item>
+        </ion-item>
+        <ion-item style="border: 1px solid lightgrey;border-radius: 5px ;margin-bottom: 10px !important;">
+            <b>Can be paid Delayed / Advance due online?</b>
+            <ion-item>
+                No, customers can pay only current due online.
+            </ion-item>
+        </ion-item>
+    </ion-item> -->
+
+    <div class="" style="text-align: center;">
+        <img src='assets/img/logo.svg' style="width: 70%;"  />
+    </div>
+    <p style="text-align:center;"><strong>Welcome to {{companyName}}.</strong></p>
+
+    <span>
+        <ion-card *ngIf="faq['type'] == 2" style="background: transparent !important;">
+        <ion-card-content>
+            <span class="termsfont" [innerHTML]="faq['content']"></span>
+    </ion-card-content>
+    </ion-card>
+
+    </span>
+
+
+</ion-content>

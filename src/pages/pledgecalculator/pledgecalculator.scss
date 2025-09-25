@@ -1,0 +1,77 @@
+page-pledgecalculator {
+    .scroll-content {
+        bottom: 30px !important;
+    }
+    .item-md {
+        /* padding-left: 16px; */
+        padding: 0px !important;
+        border: 1px solid #dedede !important;
+        margin-bottom: 5px !important;
+        border-radius: 5px;
+        width: 50% !important;
+    }
+    .select-md{
+        width: 100% !important;
+    }
+    .segment-md .segment-button.segment-activated {
+        color: white !important;
+        background: #EA5759 !important;
+    }
+    .row {
+        /*  border: 1px solid lightgray !important; */
+        // margin-bottom: 5px !important;
+        
+    }
+    .item-input ion-input,
+    .item-input ion-textarea {
+        position: static;
+        padding-left: 12px !important;
+    }
+    .fab{
+
+
+        bottom: 35px !important;
+
+    }
+    .segment-md .segment-button {
+        color: black !important;
+        background: white !important;
+        border:1px solid #a6a5a5 !important;
+    }
+    .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+        border-color: transparent !important;
+    }
+    .fab ion-icon {
+
+        font-size: 3.4rem !important;
+        
+    }
+    .fab-md{
+
+        background-color: #EA5753  !important;
+        height: 43px !important;
+        width: 43px !important;
+    }
+    ion-scroll.scroll-x .scroll-content{
+        padding: 0px !important;
+    }
+    /*     .item-input ion-input,
+    .item-input ion-textarea {
+        position: static;
+        padding-left: 12px !important;
+    } */
+    .label-md {
+        margin: 10px 2px 2px 3px !important;
+    }
+    .interest-hei {
+        min-height: 4.4rem !important;
+        border: 1px solid lightgray !important;
+        padding-left: 16px !important;
+    }
+    ion-select {
+        max-width: 100% !important;
+    }
+    .text-input::-webkit-input-placeholder {
+        text-align: center;
+    }
+}

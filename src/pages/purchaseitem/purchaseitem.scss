@@ -1,0 +1,48 @@
+page-purchaseitem {
+    .scroll-content {
+        // bottom: 30px !important;
+    }
+    .item-md {
+        /* padding-left: 16px; */
+        padding: 0px !important;
+        border: 1px solid #dedede !important;
+        margin-bottom: 5px !important;
+        border-radius: 5px;
+        width: 50% !important;
+    }
+    .select-md{
+        width: 100% !important;
+    }
+    .card-md {
+        margin: 0px !important; 
+        width: calc(100% - 0px) !important;
+    }
+    .row {
+        /*  border: 1px solid lightgray !important; */
+        margin-bottom: 5px !important;
+    }
+    .item-input ion-input,
+    .item-input ion-textarea {
+        position: static;
+        padding-left: 12px !important;
+    }
+    /*     .item-input ion-input,
+    .item-input ion-textarea {
+        position: static;
+        padding-left: 12px !important;
+    } */
+    .label-md {
+        margin: 10px 2px 2px 3px !important;
+    }
+    .interest-hei {
+        min-height: 4.4rem !important;
+        border: 1px solid lightgray !important;
+        padding-left: 16px !important;
+    }
+    ion-select {
+        max-width: 100% !important;
+    }
+    /*     .text-input::-webkit-input-placeholder {
+        text-align: center;
+    } */
+}

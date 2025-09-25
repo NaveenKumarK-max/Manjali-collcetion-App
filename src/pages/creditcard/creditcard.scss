@@ -1,0 +1,15 @@
+page-creditcard {
+    .item-md {
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    .checkbox-md .checkbox-icon {
+        border-radius: 7px !important;
+        width: 22px !important;
+        height: 20px !important;
+    }
+    .checkbox-md .checkbox-checked .checkbox-inner {
+        left: 6px !important;
+    }
+}

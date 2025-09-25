@@ -1,0 +1,265 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-row style=" border: none !important; margin: auto !important;">
+      <ion-col style="margin: auto !important;margin-left: -10px !important;">
+        <ion-title  style="font-size: small !important;text-transform:none !important;" >Customer Registration</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+<ion-content text-center padding>
+  <ion-segment [(ngModel)]="type" (ngModelChange)="segmentChanged($event)" color="secondary">
+    <ion-segment-button class="" value="p">Personal</ion-segment-button>
+    <ion-segment-button class="" value="o">Others</ion-segment-button>
+  </ion-segment>
+  <form [formGroup]="registerForm" novalidate padding>
+      <!-- <p style="text-align: left !important;color: #2e2e2e !important; font-size: 18px !important;">Sign Up</p> -->
+      <!-- <ion-row style="text-align: center !important;border: none !important;">
+      <ion-col>
+      <p class="bottom-line" style="word-wrap: break-word !important;text-transform: uppercase !important;">
+      Registration </p>
+      </ion-col>
+      </ion-row> -->
+      <span *ngIf="type == 'p'">
+
+        <!-- <ion-item>
+        <ion-label style="padding-left: 21px !important;position: static;color: #a0a0a0;">Select</ion-label>
+        <ion-select style="border: none !important;background: transparent !important" [formControl]="title">
+        <ion-option value="Mr">Mr</ion-option>
+        <ion-option value="Mrs">Mrs</ion-option>
+        <ion-option value="Ms">Ms</ion-option>
+        <ion-option value="Dr">Dr</ion-option>
+        <ion-option value="Prof">Prof</ion-option>
+        </ion-select>
+        </ion-item> -->
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important">
+          <ion-input class="" type="text" [pattern]="reg" [formControl]="firstname" placeholder="First Name *"></ion-input>
+        </ion-item>
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important">
+          <ion-input class="" type="text" [formControl]="lastname" placeholder="Last Name {{custom_fields['lastname'] == 2 ? '*':''}}"></ion-input>
+        </ion-item>
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important">
+          <ion-input class="" type="tel" (keyup)="onKeyUp($event)" [formControl]="mobile" placeholder="10 Digit Mobile Number *" maxlength="10"></ion-input>
+        </ion-item>
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important" *ngIf="custom_fields['email'] != 0">
+          <ion-input class="" type="email" [formControl]="email" placeholder="youremailid@domain.com{{custom_fields['email'] == 2 ? '*':''}}"></ion-input>
+        </ion-item>
+
+        <ion-row style="background-color: transparent !important;margin-bottom: 10px !important;border-radius: 5px !important;border:1px solid #b26f07 !important;">
+          <ion-col>
+            <ion-select class="selectclass" placeholder="Select Gender" style="border: none !important;background: transparent !important;text-align: left !important;font-size: 1.6rem !important;padding-left: 12px !important;" [formControl]="gender">
+              <ion-option class="" value="0">Male</ion-option>
+              <ion-option class="" value="1">Female</ion-option>
+              <ion-option class="" value="2">Others</ion-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important;">
+          <ion-input readonly="true" class="ion_datetime" name="deliverydate" [formControl]="date_of_birth" placeholder="Date of Birth " displayFormat="DD-MM-YYYY" (tap)="birth()"></ion-input>
+        </ion-item>
+
+        <!--<ion-row style="background: white !important;margin-bottom: 20px !important;border-radius: 5px !important;">
+          <ion-col>
+            <ion-select class="selectclass" placeholder="Marital Status " style="border: none !important;background: transparent !important;text-align: left !important;font-size: 1.6rem !important;padding-left: 12px !important;" [formControl]="maritalstatus">
+              <ion-option value="0">Single</ion-option>
+              <ion-option value="1">Married</ion-option>
+              <ion-option value="2">Others</ion-option>
+            </ion-select>
+            </ion-col>
+        </ion-row> -->
+
+        <ion-row *ngIf="custom_fields['country'] != 0 " style="background-color: transparent !important;margin-bottom: 10px !important;border-radius: 5px !important;border:1px solid #b26f07 !important;">
+          <ion-col col-10 style="margin: auto !important;">
+            <ion-input class="" [formControl]="countryname" type="text" readonly='true' placeholder="Country{{custom_fields['country'] == 2 ? '*':''}}">
+            </ion-input>
+          </ion-col>
+          <ion-col col-2 style="padding: 12px !important;">
+            <ion-icon name="ios-arrow-down"></ion-icon>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="custom_fields['state'] != 0 " style="background-color: transparent !important;margin-bottom: 10px !important;border-radius: 5px !important;border:1px solid #b26f07 !important;">
+          <ion-col col-10 style="margin: auto !important;">
+            <ion-input class="" [formControl]="statename" (tap)="openmodalReg('State',state)" type="text" readonly='true' placeholder="State{{custom_fields['state'] == 2 ? '*':''}}"></ion-input>
+          </ion-col>
+          <ion-col col-2 style="padding: 12px !important;">
+            <ion-icon name="ios-arrow-down"></ion-icon>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="custom_fields['city'] != 0" style="background-color: transparent !important;margin-bottom: 10px !important;border-radius: 5px !important;border:1px solid #b26f07 !important;">
+          <ion-col col-10 style="margin: auto !important;">
+            <ion-input class="" [formControl]="cityname" (tap)="openmodalReg('City',city)" type="text" readonly='true'  placeholder="City{{custom_fields['city'] == 2 ? '*':''}}"></ion-input>
+          </ion-col>
+          <ion-col col-2 style="padding: 12px !important;">
+            <ion-icon name="ios-arrow-down"></ion-icon>
+          </ion-col>
+        </ion-row>
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important;" *ngIf="custom_fields['address1'] != 0 ">
+          <ion-input class="" type="text" [formControl]="address1" placeholder="Address1{{custom_fields['address1'] == 2 ? '*':''}}"></ion-input>
+        </ion-item>
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important;" *ngIf="custom_fields['address2'] != 0 ">
+          <ion-input class="" type="text" [formControl]="address2" placeholder="Address2{{custom_fields['address2'] == 2 ? '*':''}}"></ion-input>
+        </ion-item>
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important;">
+          <ion-input class="" type="tel" [formControl]="pincode" (keyup)="onKeyUp($event)" placeholder="Pincode *" maxlength="6"></ion-input>
+        </ion-item>
+
+        <!-- <ion-row style="padding-left: 10px;padding-right: 0; position: relative; font-weight: normal;border:1px solid #b26f07 !important;background-color: transparent !important;"  *ngIf="branch_settings == 1 && is_branchwise_cus_reg == 1">
+          <ion-col col-10 style="margin: auto;">
+            <ion-input class="" [formControl]="branchname" (tap)="openmodal()" type="text" readonly='true' placeholder="Select Branch *" style="font-size: medium;"></ion-input>
+          </ion-col>
+          <ion-col col-2>
+            <ion-icon (tap)="openmodal()" style="margin-top: 10px !important;" name="ios-arrow-down"></ion-icon>
+          </ion-col>
+        </ion-row> -->
+
+        <ion-row *ngIf="custom_fields['city'] != 0" style="background-color: transparent !important;margin-bottom: 10px !important;border-radius: 5px !important;border:1px solid #b26f07 !important;">
+          <ion-col col-10 style="margin: auto !important;">
+            <ion-input class="" [formControl]="branchname" (tap)="openmodal()" type="text" readonly='true'  placeholder="Select Branch *"></ion-input>
+          </ion-col>
+          <ion-col col-2 style="padding: 12px !important;">
+            <ion-icon name="ios-arrow-down" (tap)="openmodal()"></ion-icon>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="custom_fields['custype'] != 0 " style="background-color: transparent !important;margin-bottom: 10px !important;border-radius: 5px !important;border:1px solid #b26f07 !important;" >
+          <ion-col>
+            <ion-select  [formControl]="custype" class="selectclass" placeholder="Customer Type *" style="border: none !important;background: transparent !important;text-align: left !important;font-size: 1.6rem !important;padding-left: 12px !important;">
+              <ion-option value="0" class="">Individual</ion-option>
+              <ion-option value="1" class="">Business</ion-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+
+        <!-- Nominee -->
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important" *ngIf="custom_fields['nominee_name'] != 0 ">
+          <ion-input class="" type="text" [pattern]="reg" [formControl]="nominee_name" placeholder="Nominee Name{{custom_fields['nominee_name'] == 2 ? '*':''}}"></ion-input>
+        </ion-item>
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important" *ngIf="custom_fields['nominee_mobile'] != 0 ">
+          <ion-input class="" type="tel" (keyup)="onKeyUp($event)" [formControl]="nominee_mobile" placeholder="Nominee Mobile Number {{custom_fields['nominee_mobile'] == 2 ? '*':''}}" maxlength="10"></ion-input>
+        </ion-item>
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important" *ngIf="custom_fields['nominee_relationship'] != 0 ">
+          <ion-input class="" type="text" [pattern]="reg" [formControl]="nominee_relationship" placeholder="Nominee Relationship {{custom_fields['nominee_relationship'] == 2 ? '*':''}}"></ion-input>
+        </ion-item>
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important;" *ngIf="custom_fields['nominee_address1'] != 0 ">
+          <ion-input class="" type="text" [formControl]="nominee_address1" placeholder="Nominee Address1 {{custom_fields['nominee_address1'] == 2 ? '*':''}}"></ion-input>
+        </ion-item>
+
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important;" *ngIf="custom_fields['nominee_address2'] != 0 ">
+          <ion-input class="" type="text" [formControl]="nominee_address2" placeholder="Nominee Address2 {{custom_fields['nominee_address2'] == 2 ? '*':''}}"></ion-input>
+        </ion-item>
+
+      </span>
+
+
+      <span *ngIf="type == 'o'">
+
+        <!-- aadhaar -->
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important;">
+          <ion-input (keyup)="onKeyUp($event)" [formControl]="adharno" type="tel" class="" placeholder="Enter 12 digit Aadhaar no." maxlength="12"></ion-input>
+        </ion-item>
+
+        <ion-row style="border: none !important;">
+          <ion-col (click)="takePicture(camera.PictureSourceType.CAMERA,'adhar')" col-2 style="text-align: start;">
+            <ion-icon name="camera" style="top: 50%; position: absolute; color: #b26f07;"></ion-icon>
+          </ion-col>
+          <ion-col col-8>
+            <ion-item style="border: none !important;    margin-left: 8px; background-color: transparent !important;">
+              <ion-thumbnail style="text-align: -webkit-center;">
+                <ion-icon *ngIf="aadhaarbase64 == null || aadhaarbase64 == ''" name="person" style="border-radius: 50%;font-size: 6em !important;" ></ion-icon>
+                <img style="max-width: 50% !important;" *ngIf="aadhaarbase64 != null && aadhaarbase64 != ''" src="{{aadhaarbase64}}">
+              </ion-thumbnail>
+            </ion-item>
+          </ion-col>
+          <ion-col (click)="takePicture(camera.PictureSourceType.PHOTOLIBRARY,'adhar')" col-1>
+            <ion-icon name="image" style="top: 50%;position: absolute;color: #b26f07;"></ion-icon>
+          </ion-col>
+        </ion-row>
+
+        <!-- pan -->
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important;">
+          <ion-input (keyup)="keyup($event)" [formControl]="pannumber" type="text" class="" placeholder="PAN Number (Ex. AAAPL1234C)" maxlength="10" minlength="10"></ion-input>
+        </ion-item>
+
+        <ion-row style="border: none !important;">
+          <ion-col (click)="takePicture(camera.PictureSourceType.CAMERA,'pan')" col-2 style="text-align: start;">
+            <ion-icon name="camera" style="top: 50%; position: absolute; color: #b26f07;"></ion-icon>
+          </ion-col>
+          <ion-col col-8>
+            <ion-item style="border: none !important;    margin-left: 8px; background-color: transparent !important;">
+              <ion-thumbnail style="text-align: -webkit-center;">
+                <ion-icon style="border-radius: 50%;font-size: 6em !important;" *ngIf="panbase64 == null || panbase64 == ''" name="person"></ion-icon>
+                  <img style="max-width: 50% !important;" *ngIf="panbase64 != null && panbase64 != ''" src="{{panbase64}}">
+              </ion-thumbnail>
+            </ion-item>
+          </ion-col>
+          <ion-col (click)="takePicture(camera.PictureSourceType.PHOTOLIBRARY,'pan')" col-1>
+            <ion-icon name="image" style="top: 50%;position: absolute;color: #b26f07;"></ion-icon>
+          </ion-col>
+        </ion-row>
+
+        <!-- Dl -->
+        <ion-item style="border:1px solid #b26f07 !important;background-color: transparent !important;">
+          <ion-input (keyup)="dlkeyup($event)" [formControl]="dlcno" type="text" class="" placeholder="License Number (Ex. TNXX2019XXXXXXX)" maxlength="16" minlength="15"></ion-input>
+        </ion-item>
+
+        <ion-row style="border: none !important;">
+          <ion-col (click)="takePicture(camera.PictureSourceType.CAMERA,'dl')" col-2 style="text-align: start;">
+            <ion-icon name="camera" style="top: 50%; position: absolute; color: #b26f07;"></ion-icon>
+          </ion-col>
+          <ion-col col-8>
+            <ion-item style="border: none !important;    margin-left: 8px; background-color: transparent !important;">
+              <ion-thumbnail style="text-align: -webkit-center;">
+                <ion-icon style="border-radius: 50%;font-size: 6em !important;" *ngIf="dlbase64 == null || dlbase64 == ''" name="person"></ion-icon>
+                <img style="max-width: 50% !important;" *ngIf="dlbase64 != null && dlbase64 != ''" src="{{dlbase64}}">
+              </ion-thumbnail>
+            </ion-item>
+          </ion-col>
+          <ion-col (click)="takePicture(camera.PictureSourceType.PHOTOLIBRARY,'dl')" col-1>
+            <ion-icon name="image" style="top: 50%;position: absolute;color: #b26f07;"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </span>
+
+      <ion-row style="border: none !important;">
+        <ion-col col-1>
+          <ion-checkbox [formControl]="check"></ion-checkbox>
+        </ion-col>
+        <ion-col col-11 style="font-weight: bolder;" class="">
+          By Registering, You agree to our Terms and Conditions
+        </ion-col>
+      </ion-row>
+
+      <!--<ion-row style="border: none !important;">
+        <ion-col style="text-align: -webkit-center !important;">
+          <button (click)="onSubmit(registerForm.value)" style="background: #813528 !important;color:white !important;width: 100% !important;" ion-button class="button-login" block color="dark">Sign Up</button>
+        </ion-col>
+      </ion-row> -->
+      <ion-row style="border:none !important;margin-bottom: 5px !important;">
+        <ion-col col-6></ion-col>
+        <ion-col col-6 style="text-align: -webkit-right !important;">
+          <button (click)="onSubmit(registerForm.value)" ion-button icon-start full class="theme-btn" style="background: #b26f07 !important;color:white !important;width: 125px !important;width: 125px !important;border-radius: 10px !important;">Save</button>
+        </ion-col>
+      </ion-row>
+
+  </form>
+
+
+
+</ion-content>
+<ion-footer style="color: #b26f07 !important    ;">
+</ion-footer>

@@ -1,0 +1,83 @@
+<!--
+  Generated template for the InvitePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Share To Friends</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-card>
+        <ion-row>
+            <ion-col col-4>
+
+            </ion-col>
+            <ion-col col-4 style="text-align: center;">
+                <img src="assets/social_media.png">
+            </ion-col>
+            <ion-col col-4>
+
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col style="text-align: center;font-weight: bold;">
+                <h3 style="color: #a6a2a2 !important;">Refer your friends </h3>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col *ngIf="allow != '' && allow['currency']['allow_referral'] == 1" style="text-align: center;    ">
+                Invite your friends to join purchase plan with {{companyName}}.
+            </ion-col>
+            <ion-col *ngIf="allow != '' && allow['currency']['allow_referral'] != 1 && allow['currency']['allow_shareonly'] == 1" style="text-align: center;    ">
+                Invite your friends to purchase plan with {{companyName}}.
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col style="text-align: center;font-weight: bold;">Referal Code : <span *ngIf="status == true">{{currentUser['mobile']}}</span></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col style="text-align: center;">Invite Link:</ion-col>
+        </ion-row>
+        <ion-row *ngIf="status == true">
+            <ion-col (click)="whatsapp()" style="border: 1px solid lightgray;text-align: center;">
+                <ion-icon>
+                    <ion-icon name="logo-whatsapp"></ion-icon>
+
+                </ion-icon>
+            </ion-col>
+            <ion-col (click)="facebook()" style="border: 1px solid lightgray;text-align: center;">
+                <ion-icon>
+                    <ion-icon name="logo-facebook"></ion-icon>
+
+                </ion-icon>
+            </ion-col>
+
+            <ion-col (click)="twitter()" style="border: 1px solid lightgray;text-align: center;">
+                <ion-icon>
+                    <ion-icon name="logo-twitter"></ion-icon>
+
+                </ion-icon>
+            </ion-col>
+            <ion-col (click)="messagee()" style="border: 1px solid lightgray;text-align: center;">
+                <ion-icon>
+                    <ion-icon name="text"></ion-icon>
+
+                </ion-icon>
+            </ion-col>
+            <ion-col (click)="email()" style="border: 1px solid lightgray;text-align: center;">
+                <ion-icon>
+                    <ion-icon name="mail"></ion-icon>
+
+                </ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+</ion-content>

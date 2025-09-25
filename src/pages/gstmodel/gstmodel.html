@@ -1,0 +1,54 @@
+<!--
+  Generated template for the WalletmodalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content no-padding>
+    <ion-row style="border-bottom: 1px solid lightgray;
+  background: #fbf8f8;">
+        <ion-col col-2></ion-col>
+        <ion-col col-8 style="font-weight: bold;text-align: center;">Payment Detail</ion-col>
+        <ion-col col-2></ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col col-6>
+            Purchase Payment
+        </ion-col>
+        <ion-col col-1>
+            :
+        </ion-col>
+        <ion-col col-5>
+            <span [innerHTML]="currency.currency.curr_symb_html"></span> {{details['payment_amount']}}
+
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-6>
+            GST
+        </ion-col>
+        <ion-col col-1>
+            :
+        </ion-col>
+        <ion-col col-5>
+            <span [innerHTML]="currency.currency.curr_symb_html"></span> {{details['paid_gst']}}
+
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col *ngIf="details['gst_type'] == 0" style="color: red !important;">Purchase Payment inclusive of GST</ion-col>
+        <ion-col *ngIf="details['gst_type'] == 1" style="color: red !important;">Purchase Payment exclusive of GST</ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <button (click)="close()" style="background: #ffab08 !important;color:black" ion-button full>Ok</button>
+
+        </ion-col>
+    </ion-row>
+
+</ion-content>

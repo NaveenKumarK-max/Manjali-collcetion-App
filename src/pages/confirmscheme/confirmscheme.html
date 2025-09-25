@@ -1,0 +1,221 @@
+
+
+<ion-header>
+    <ion-navbar>
+
+        <ion-row>
+            <ion-col style="margin: auto !important;margin-left: -10px !important;">
+                <ion-title style="font-size: small !important;text-transform:none !important;" >Join Savings Scheme</ion-title>
+            </ion-col>
+            <ion-col style="text-align: end !important;">
+                <!-- <img style="width: 40px !important;" (click)="metal()" src='assets/img/goldbarline.svg' /> -->
+            </ion-col>
+        </ion-row>
+
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card *ngIf="errormsg" style="text-align: center !important;">
+        <p style="color: red !important;"> {{ errormsg }} </p>
+    </ion-card>
+
+<!--     <ion-row style="text-align: center !important;">
+        <ion-col>
+            <p *ngIf="classimage['logo'] == '' || classimage['logo'] == null"
+                style="font-size: 15px !important; color: black; word-wrap: break-word !important;">
+                {{classimage['classification_name']}}</p>
+            <img *ngIf="classimage['logo'] != '' && classimage['logo'] != null" class="" style="width: 50% !important;"
+                src="{{classimage['logo']}}" />
+        </ion-col>
+    </ion-row> -->
+
+
+    <p style="color: #b26f07;text-align: center;" class="
+    ">If you want to join new purchase plan proceed</p>
+    <ion-card *ngIf="nadata != ''">
+        <ion-card-header style="text-align:center;font-weight: bold;color: black !important;" class="
+        ">
+            {{nadata['scheme_name']}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row>
+              <ion-col>
+                  Duration
+              </ion-col>
+              <ion-col>
+                  {{nadata['total_installments']}} months
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col>
+                  Monthly Advance
+              </ion-col>
+              <ion-col *ngIf="nadata['scheme_type'] == 0">
+                  <span [innerHTML]="currency.curr_symb_html"></span> {{nadata['amount']}}
+              </ion-col>
+              <ion-col *ngIf="nadata['scheme_type'] == 2">
+                  <span [innerHTML]="currency.curr_symb_html"></span> {{nadata['amount']}}
+              </ion-col>
+
+              <ion-col
+                  *ngIf="nadata['scheme_type'] == 3 && nadata['flx_denomintion'] != null && ( nadata['flexible_sch_type'] == 1 || nadata['flexible_sch_type'] == 2 ) ">
+                  Min <span [innerHTML]="currency.curr_symb_html"></span>{{nadata['min_amount']}} Max <span
+                      [innerHTML]="currency.curr_symb_html"></span> {{nadata['max_amount']}} or Its
+                  Multiplies of <span
+                      [innerHTML]="currency.curr_symb_html"></span>{{nadata['flx_denomintion']
+                  !=null && nadata['flx_denomintion'] || 0 }}
+              </ion-col>
+
+              <ion-col
+                  *ngIf="nadata['scheme_type'] == 3 && nadata['flx_denomintion'] == null && ( nadata['flexible_sch_type'] == 1 || nadata['flexible_sch_type'] == 2 ) ">
+                  Min <span [innerHTML]="currency.curr_symb_html"></span> {{nadata['min_amount']}} Max <span
+                      [innerHTML]="currency.curr_symb_html"></span> {{nadata['max_amount']}}
+              </ion-col>
+
+              <ion-col
+                  *ngIf="nadata['scheme_type'] == 3 && nadata['flx_denomintion'] == null && ( nadata['flexible_sch_type'] == 3 || nadata['flexible_sch_type'] == 4 ) ">
+                  Min {{nadata['min_weight']}} g Max {{nadata['max_weight']}} g
+              </ion-col>
+
+              <ion-col *ngIf="nadata['scheme_type'] == 1">
+                  {{nadata['max_weight']}} g
+              </ion-col>
+          </ion-row>
+          <ion-row *ngIf="nadata['type'] == 0">
+              <ion-col>
+                  Denominations
+              </ion-col>
+
+              <ion-col>
+                  <ion-row>
+                      <ion-col no-padding style="padding-right: 4px !important;" *ngFor="let w of wt">
+                          {{w['weight'] | number}}g
+
+                      </ion-col>
+                  </ion-row>
+              </ion-col>
+          </ion-row>
+          <ion-row *ngIf="nadata['scheme_type'] != 3 && nadata['type'] != 0">
+              <ion-col>
+                  Total Payable
+              </ion-col>
+              <ion-col *ngIf="nadata['scheme_type'] == 0">
+                  <span [innerHTML]="currency.curr_symb_html"></span> {{total}}
+              </ion-col>
+              <ion-col *ngIf="nadata['scheme_type'] == 2">
+                  <span [innerHTML]="currency.curr_symb_html"></span> {{total}}
+              </ion-col>
+              <ion-col *ngIf="nadata['scheme_type'] == 1">
+                  {{total}} g
+              </ion-col>
+          </ion-row>
+
+          <ion-item style="border: 1px solid lightgray !important;margin-bottom: 3px !important;">
+              <ion-input (keyup)="onKeyUp($event)" [(ngModel)]="accountname" type="text" placeholder="Account Name">
+              </ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="currency['allow_referral'] == 1 && nadata['show_referral'] == 1 "
+              style="border: 1px solid lightgray !important;margin-bottom: 3px !important;">
+
+              <ion-input [(ngModel)]="refcode" type="text" placeholder="Referal Code (Optional)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="nadata['is_pan_required'] == 1"
+              style="border: 1px solid lightgray !important;margin-bottom: 3px !important;">
+
+              <ion-input [(ngModel)]="pancode" type="text" (ngModelChange)="pancode= $event.toLocaleUpperCase()"
+                  maxlength="11" placeholder="PAN NO."></ion-input>
+          </ion-item>
+
+          <ion-row
+              style="border: 1px solid lightgray !important;padding-left: 10px;padding-right: 0; position: relative; font-size: 1.6rem; font-weight: normal;"
+              *ngIf="nadata['branch_settings'] == 1 && is_branchwise_cus_reg != 1"
+              style="border: 1px solid lightgray !important">
+              <ion-col col-10>
+                  <ion-input [(ngModel)]="branchname" (tap)="openmodal()" type="text" readonly='true'
+                      placeholder="Select Branch"></ion-input>
+              </ion-col>
+              <ion-col col-2>
+                  <ion-icon (tap)="openmodal()" style="margin-top: 10px !important;" name="ios-arrow-down"></ion-icon>
+              </ion-col>
+          </ion-row>
+
+
+      <!--         <ion-row style="background: white !important;border: 1px solid lightgray !important;;margin-bottom: 3px !important;">
+                  <ion-col>
+                      <ion-select class="selectclass" placeholder="Select"
+                          style="border: none !important;background: transparent !important;text-align: left !important;font-size: 1.6rem !important;padding-left: 12px !important;"
+                          [(ngModel)]="payoption">
+                          <ion-option value="cash">Cash</ion-option>
+                          <ion-option value="card">Card</ion-option>
+                      </ion-select>
+                  </ion-col>
+              </ion-row> -->
+
+          <!--     Manual Enter Amount for type 3 scheme     -->
+
+          <ion-item *ngIf="nadata['get_amt_in_schjoin'] == 1 && nadata['scheme_type'] == 3"
+              style="border: 1px solid lightgray !important;margin-bottom: 3px !important;">
+              <ion-input [(ngModel)]="payamt" (ngModelChange)="check()" type="number" placeholder="Amount">
+              </ion-input>
+          </ion-item>
+
+          <ion-row>
+              <ion-col *ngIf="err == true"
+                  style="font-weight: bolder;color:red;font-size: x-small; text-align: center !important;">Please
+                  Enter Valid Amount
+              </ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col *ngIf="err == 'multi'"
+                  style="font-weight: bolder;color:red;font-size: x-small;text-align: center !important;">Please Enter
+                  {{nadata['flx_denomintion']}} multiplies.
+              </ion-col>
+          </ion-row>
+
+          <ion-row *ngIf="nadata['is_pan_required'] == 1">
+              <ion-col style="text-align: center;">
+                  For given PAN, original should be produced at the time of Purchase. Copy of PAN Card should be
+                  submitted.
+              </ion-col>
+          </ion-row>
+
+          <ion-row *ngIf="nadata.description !=''">
+              <ion-col col-10 style="color: #69090a !important;">
+                  Terms and Conditions
+              </ion-col>
+              <ion-col col-2>
+                  <ion-icon (click)="tog()" *ngIf="toggle" name="arrow-dropdown"></ion-icon>
+                  <ion-icon (click)="tog()" *ngIf="!toggle" name="arrow-dropup"></ion-icon>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col class="termsfont">
+                  <span *ngIf="nadata.description !='' && !toggle "
+                      [innerHTML]="nadata.description"></span>
+              </ion-col>
+          </ion-row>
+
+
+          <ion-row>
+              <ion-col col-1>
+                  <ion-checkbox (ionChange)="agree($event)"></ion-checkbox>
+
+              </ion-col>
+              <ion-col (click)="dynamic()" col-11 style="font-weight: bolder; text-align: left !important;">
+                  I agree with terms and conditions
+              </ion-col>
+          </ion-row>
+          <!--  <button (click)="confirm()" style="background: #ffab08;font-weight: bold;" ion-button full>Join Scheme</button> -->
+          <ion-row style="text-align: center;">
+              <ion-col>
+                  <button ion-button (click)="confirm()" class="joinbtn" [disabled]="allowjoin == false">Join
+                      Plan</button>
+              </ion-col>
+          </ion-row>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

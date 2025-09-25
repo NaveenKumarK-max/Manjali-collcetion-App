@@ -1,0 +1,349 @@
+
+
+
+<ion-header>
+    <ion-toolbar>
+        <ion-row>
+            <ion-col>
+                <button  (click)="goBack()"
+                    style="background: transparent !important;color: black !important;font-size: 20px !important;">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col style="margin: auto !important;margin-left: -10px !important;">
+                <ion-title style="font-size: small !important;text-transform:none !important;" >Pay EMA</ion-title>
+            </ion-col>
+            <ion-col style="text-align: end !important;">
+                <span style="font-weight: bold !important;text-transform: uppercase !important;font-size:initial !important;
+
+                color: black !important;"  end>V-{{app_version}}</span>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+
+<!-- <ion-header>
+    <ion-navbar>
+        <ion-row>
+            <ion-col>
+                <button  (click)="goBack($event)"
+                    style="background: transparent !important;color: #e1e1e1 !important;font-size: 20px !important;">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col style="margin: auto !important;margin-left: -10px !important;">
+                <ion-title style="font-size: small !important;text-transform:none !important;" >Pay EMA</ion-title>
+            </ion-col>
+            <ion-col style="text-align: end !important;">
+                <span style="font-weight: bold !important;text-transform: uppercase !important;font-size:initial !important;
+
+                color: #e1e1e1 !important;"  end>V-{{app_version}}</span>
+            </ion-col>
+        </ion-row>
+    </ion-navbar>
+  </ion-header> -->
+
+
+
+<ion-content>
+    <br>
+
+    <ion-row>
+        <ion-col style="font-weight: bold;background: #eeeeee !important;
+
+        ">
+            Proceed with :
+        </ion-col>
+    </ion-row>
+
+    <ion-card (click)="tog(0,4)" *ngIf="showCash && showstaticgateway">
+        <ion-row>
+            <ion-col col-9 style="margin: auto;">
+
+                <ion-row>
+                    <ion-col style="font-weight: bold;">
+                        Cash
+                    </ion-col>
+
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Receive Cash from customer
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col col-3 style="margin: auto !important;">
+                <img style="height: 50px !important;width: auto;margin: auto;" src='assets/money.png'>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+
+
+
+    <!-- <ion-card *ngIf="showCash">
+        <ion-row (click)="showref('cc')">
+            <ion-col col-9 style="margin: auto;">
+                <ion-row>
+                    <ion-col style="font-weight: bold;">
+                        Credit Card
+                    </ion-col>
+
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Receive CreditCard Payment from customer
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col col-3 style="margin: auto !important;">
+                <img style="height: 50px !important;width: auto;margin: auto;" src='assets/creditcard.png'>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="type=='cc'">
+            <ion-col col-9>
+                <ion-input type="text" [(ngModel)]="referenceNo" placeholder="CreditCard Reference No" style="background: white !important;"></ion-input>
+            </ion-col>
+
+            <ion-col col-3 style="text-align: center !important">
+                <button (click)="tog('cc',5)" class="joinbtn" [disabled]="!referenceNo" ion-button>submit</button>
+            </ion-col>
+        </ion-row>
+    </ion-card> -->
+
+
+<!--
+    <ion-card  *ngIf="showCash">
+        <ion-row (click)="showref('dc')">
+            <ion-col col-9 style="margin: auto;">
+
+                <ion-row>
+                    <ion-col style="font-weight: bold;">
+                        Debit Card
+                    </ion-col>
+
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Receive DebitCard Payment from customer
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col col-3 style="margin: auto !important;">
+                <img style="height: 50px !important;width: auto;margin: auto;" src='assets/debitcard.png'>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="type=='dc'">
+            <ion-col col-9>
+                <ion-input type="text" [(ngModel)]="referenceNo" placeholder="DebitCard Reference No" style="background: white !important;"></ion-input>
+            </ion-col>
+
+            <ion-col col-3 style="text-align: center !important">
+                <button (click)="tog('dc',6)" class="joinbtn" [disabled]="!referenceNo" ion-button>submit</button>
+            </ion-col>
+        </ion-row>
+
+    </ion-card> -->
+
+
+
+
+
+
+    <!-- <ion-card  *ngIf="showCash">
+        <ion-row (click)="showref('nb')">
+            <ion-col col-9 style="margin: auto;">
+
+                <ion-row>
+                    <ion-col style="font-weight: bold;">
+                        NetBanking
+                    </ion-col>
+
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Receive NetBanking Payment from customer
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col col-3 style="margin: auto !important;">
+                <img style="height: 30px !important;width: auto;margin: auto;" src='assets/nb.png'>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="type=='nb'">
+            <ion-col col-9>
+                <ion-input type="text" [(ngModel)]="referenceNo" placeholder="Net Banking Ref No." style="background: white !important;"></ion-input>
+            </ion-col>
+
+            <ion-col col-3 style="text-align: center !important">
+                <button (click)="tog('nb',7)" class="joinbtn" [disabled]="!referenceNo" ion-button>submit</button>
+            </ion-col>
+        </ion-row>
+
+    </ion-card> -->
+
+
+
+
+
+<!--
+    <ion-card  *ngIf="showCash">
+        <ion-row (click)="showref('upi')">
+            <ion-col col-9 style="margin: auto;">
+
+                <ion-row>
+                    <ion-col style="font-weight: bold;">
+                        UPI Payment
+                    </ion-col>
+
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Receive UPI Payment from customer
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col col-3 style="margin: auto !important;">
+                <img style="height: 30px !important;width: auto;margin: auto;" src='assets/upi.png'>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="type=='upi'">
+            <ion-col col-9>
+                <ion-input type="text" [(ngModel)]="referenceNo" placeholder="UPI Reference No" style="background: white !important;"></ion-input>
+            </ion-col>
+
+            <ion-col col-3 style="text-align: center !important">
+                <button (click)="tog('upi',8)" class="joinbtn" [disabled]="!referenceNo" ion-button>submit</button>
+            </ion-col>
+        </ion-row>
+
+    </ion-card> -->
+
+
+
+    <span *ngIf="showCash">
+        <ion-card (click)="tog(i,p)" *ngFor="let p of all;let i = index;">
+            <ion-row>
+                <ion-col col-9 style="margin: auto;">
+
+                    <ion-row>
+                        <ion-col style="font-weight: bold;">
+                            {{p['pg_name']}}
+                        </ion-col>
+
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            {{ p['description'] }}
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+                <ion-col col-3 style="margin: auto !important;">
+                    <img style="height: 50px !important;width: auto;margin: auto;" src="{{p.pg_icon}}">
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </span>
+
+
+    <p *ngIf="status">
+        <ion-card *ngFor="let s of scard" style="padding: 10px !important;">
+            <ion-label *ngIf="s.card_mode == 'CC'" style="color:red">{{s.issuingBank}} Credit Card</ion-label>
+            <ion-label *ngIf="s.card_mode == 'DC'" style="color:red">{{s.issuingBank}} Debit Card</ion-label>
+
+            <ion-label>{{s.name_on_card}}</ion-label>
+            <ion-label>{{s.card_no}}</ion-label>
+
+            <ion-row style="background: none !important;">
+                <ion-col>
+                    <img *ngIf="s.card_brand=='MASTERCARD'" style="max-width:40%" src="assets/mastercard.png" />
+                    <img *ngIf="s.card_brand=='VISA'" style="max-width:40%" src="assets/visa.png" />
+                    <img *ngIf="s.card_brand=='MAESTRO'" style="max-width:40%" src="assets/maestro.png" />
+                    <img *ngIf="s.card_brand=='AMEX'" style="max-width:40%" src="assets/americanexpress.png" />
+                    <img *ngIf="s.card_brand=='DINERS'" style="max-width:40%" src="assets/diners.png" />
+                </ion-col>
+                <ion-col>
+                    <ion-input (tap)="smodel(s)" style="border-bottom: 1px solid lightgray !important;"
+                        placeholder="Enter CVV" type="number"></ion-input>
+
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </p>
+    <!--     <ion-row (click)="credit('CC')" *ngIf="status == true">
+        <ion-col col-2>
+            <ion-icon style="font-size: 2.0em !important;" name="ios-card"></ion-icon>
+        </ion-col>
+        <ion-col col-8>
+            <ion-row>
+                <ion-col style="font-weight: bold;">
+
+                    Credit Card
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                Master
+            </ion-row>
+        </ion-col>
+        <ion-col col-2>
+            <ion-icon style="font-size: 2.0em !important; " name="arrow-forward"></ion-icon>
+
+        </ion-col>
+    </ion-row> -->
+    <!--     <ion-row (click)="netbank('NB')" *ngIf="status == true">
+        <ion-col col-2>
+            <ion-icon style="font-size: 2.0em !important; " name="laptop"></ion-icon>
+        </ion-col>
+        <ion-col col-8>
+            <ion-row>
+                <ion-col style="font-weight: bold;">
+
+                    Net Banking
+                </ion-col>
+
+            </ion-row>
+            <ion-row>
+                All Major Banks Are Supported
+            </ion-row>
+        </ion-col>
+        <ion-col col-2>
+            <ion-icon style="font-size: 2.0em !important; " name="arrow-forward"></ion-icon>
+
+        </ion-col>
+    </ion-row> -->
+    <!--     <ion-row (click)="credit('DC')" style="margin-bottom:70px !important;" *ngIf="status == true">
+        <ion-col col-2>
+            <ion-icon style="font-size: 2.0em !important; " name="ios-card"></ion-icon>
+        </ion-col>
+        <ion-col col-8>
+            <ion-row>
+                <ion-col style="font-weight: bold;">
+
+                    Debit Card
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                Master card
+            </ion-row>
+        </ion-col>
+        <ion-col col-2>
+            <ion-icon style="font-size: 2.0em !important; " name="arrow-forward"></ion-icon>
+
+        </ion-col>
+    </ion-row> -->
+</ion-content>
+<ion-footer *ngIf="currency != ''">
+    <ion-row style="margin-bottom: 0px !important;">
+        <ion-col (click)="pay()" col-12 padding style="color: white;background: #b26f07;
+
+        ">
+            Pay &nbsp; <span style="color:white;white-space: initial;font-weight: bold;"> <span
+                    [innerHTML]="currency.currency.curr_symb_html"></span> &nbsp; {{total}}</span>
+            <ion-icon style="float: right;" name="information-circle"></ion-icon>
+        </ion-col>
+    </ion-row>
+</ion-footer>

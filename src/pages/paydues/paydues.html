@@ -1,0 +1,427 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-row>
+            <ion-col>
+                <button  (click)="goBack()"
+                    style="background: transparent !important;color: black !important;font-size: 20px !important;">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col style="margin: auto !important;margin-left: -10px !important;">
+                <ion-title style="font-size: small !important;text-transform:none !important;" >Pay EMA</ion-title>
+            </ion-col>
+            <ion-col style="text-align: end !important;">
+                <span style="font-weight: bold !important;text-transform: uppercase !important;font-size:initial !important;
+
+                color: black !important;"  end>V-{{app_version}}</span>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-row style="background: transparent !important;">
+            <ion-col col-2>
+                <button (click)="goBack($event)"
+                    style="background: transparent !important;color: black !important;font-size: 20px !important;">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col col-8 style="margin: auto !important;">
+                <span style="font-weight: bold !important;text-transform: uppercase !important;font-size:initial !important;">Pay EMA</span>
+             </ion-col>
+             <ion-col col-2 style="margin: auto !important;">
+                 <span style="font-weight: bold !important;text-transform: uppercase !important;font-size:initial !important;" end>V-{{app_version}}</span>
+             </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header> -->
+
+
+<ion-content>
+    <ion-row style="text-align: center !important;">
+        <ion-col>
+            <span style="font-size: 20px !important; color: #b26f07;
+
+            ">Pay EMA </span><br>
+            <p style="font-size: 14px !important;margin-bottom: -10px !important; color: #b26f07;
+
+            ">( Equated Monthly
+                Advance )</p>
+        </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+        <ion-col>
+            <button (click)="payhistory()" class="joinbtn" ion-button>View Payments</button>
+        </ion-col>
+        <ion-col>
+            <p style="color: #b08016 ;float: right;margin-bottom: 0px !important;
+
+            ">
+                Select Purchase Plan to make payment
+            </p>
+        </ion-col>
+    </ion-row>
+    <p style="text-align: center !important;margin-top: inherit !important; color: black;" *ngIf="dues.length == 0">You
+        don't have any Purchase Plan</p>
+
+
+    <ion-card *ngIf="disable_payment == 1 && disable_pay_reason !=null">
+        <ion-row>
+            <ion-col col-2 style="text-align: center !important;">
+                <ion-icon style="font-size: 2.9em !important;color: #c71e25 !important;" ios="ios-warning"
+                    md="md-warning"></ion-icon>
+            </ion-col>
+            <ion-col col-10
+                style="text-align: justify !important; font-weight: bolder !important;font-family: system-ui;">
+                {{disable_pay_reason}}
+            </ion-col>
+        </ion-row>
+    </ion-card>
+
+    <span *ngFor="let details of dues;let i=index">
+
+
+        <ion-card *ngIf="details.allow_pay == 'Y' " style="border-radius: 10px !important;padding-top: 10px !important;padding-bottom: 10px !important;">
+            <span>
+                <span>
+                    <ion-row>
+                        <ion-col (click)="tostcheck()" col-1 style="text-align: center !important;margin: auto !important;">
+
+                            <ion-checkbox [disabled]="collect.length>=15 && tog[i]!=true" [(ngModel)]="tog[i]" (ngModelChange)="calc(i,details)" color="primary">
+                            </ion-checkbox>
+
+                        </ion-col>
+
+<!--                         <ion-col col-11>
+                            <ion-row style="border-bottom: 1px solid lightgray;">
+                                <ion-col col-5 *ngIf="details['chit_number'] != null" style="color:#141143 !important;" class="
+
+                                ">
+                                    {{details['chit_number']}}
+                                </ion-col>
+                                <ion-col col-5 *ngIf="details['chit_number'] == null" class="
+
+                                " style="color:#141143 !important;
+
+                                ">
+                                    Not Allocated
+                                </ion-col>
+
+                                <ion-col col-2>
+                                    <ion-icon (click)="pop(details)" style="float: right;" name="information-circle" style="color:#141143 !important;">
+                                    </ion-icon>
+                                </ion-col>
+
+                                <ion-col col-5 *ngIf="details['scheme_type'] != 3 && details['scheme_type'] != 1" style="color:#141143 !important;font-size: 14px !important;font-weight: bolder !important;" class="
+
+                                ">
+                                    <span [innerHTML]="currency.currency.curr_symb_html"></span>{{details['payable']}}
+                                </ion-col>
+
+
+                               // weight scheme ( g )
+
+                                <ion-col col-5 *ngIf="details['scheme_type'] == 1" style="color:#141143 !important;font-size: 14px !important;font-weight: bolder !important;" class="
+
+                                ">
+                                    {{details['payable']}} g
+                                </ion-col>
+
+
+                                <ion-col col-5 style="color:#141143 !important;font-size: 14px !important;font-weight: bolder !important;" class="
+
+                                "
+                                    *ngIf="details['scheme_type'] == 3 && details['is_flexible_wgt'] != 1 && details['get_amt_in_schjoin'] == 1 && (details['set_as_max_from'] == null && details['set_as_min_from'] == null)">
+                                    <span [innerHTML]="currency.currency.curr_symb_html"></span>
+                                    {{details['max_amount']}}
+                                </ion-col>
+                                <ion-col col-5 class="
+
+                                "
+                                    *ngIf="details['scheme_type'] == 3 && details['get_amt_in_schjoin'] != 1 && (details['flexible_sch_type'] == 1 || details['flexible_sch_type'] == 2)"
+                                    style="font-weight: bold;color:red; font-size: 12px !important;">
+                                    Min {{details['min_amount']}} - Max {{details['max_amount']}}
+
+                                </ion-col>
+                                <ion-col col-5 class="
+
+                                "
+                                    *ngIf="details['scheme_type'] == 3 && details['get_amt_in_schjoin'] != 1 && (details['flexible_sch_type'] == 3 || details['flexible_sch_type'] == 4)"
+                                    style="font-weight: bold;color:red; font-size: 12px !important;">
+                                    Min {{details['min_weight']}}g - Max {{details['eligible_weight']}}g
+
+                                </ion-col>
+
+                                <ion-col col-5 class="
+
+                                "
+                                    *ngIf="details['scheme_type'] == 3 && details['get_amt_in_schjoin'] == 1 && (details['set_as_max_from'] != null && details['set_as_min_from'] != null)"
+                                    style="font-weight: bold;color:red; font-size: 12px !important;">
+                                    Min {{details['min_amount']}} - Max {{details['max_amount']}}
+
+                                </ion-col>
+
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col class="
+
+                                " style="color:#141143 !important;">
+                                    {{details['account_name']}}
+                                </ion-col>
+
+                                <ion-col style="text-align: right !important;" *ngIf="details['is_flexible_wgt'] != 1">
+
+                                    <span style="font-size: 12px !important;color:#141143 !important;" class="
+
+                                    ">Advance :
+                                        <ion-icon (click)="remove(i,details)" name="remove"
+                                            style="border: 1px solid #ddd;color:#141143 !important;"></ion-icon>&nbsp;
+                                        {{details['sel_due']}} &nbsp;
+                                        <ion-icon (click)="add(i,details)" name="add" style="border: 1px solid #ddd;color:#141143 !important;">
+                                        </ion-icon>
+                                    </span>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col> -->
+
+
+
+                        <ion-col col-11>
+                                <ion-row style="border-bottom: 1px solid lightgray;">
+                                 <ion-col col-5  class="
+
+                                 " *ngIf="details['chit_number'] != null">
+                                  {{details['chit_number']}}
+                                 </ion-col>
+                                 <ion-col col-5  class="
+
+                                 " *ngIf="details['chit_number'] == null">
+                                  Not Allocated
+                                 </ion-col>
+
+                                 <ion-col col-2>
+                                  <ion-icon (click)="pop(details)" style="float: right;" name="information-circle"></ion-icon>
+                                 </ion-col>
+
+                              	   <ion-col col-5  class="
+
+                                   " *ngIf="details['scheme_type'] != 3 && details['scheme_type'] != 1" style="font-size: 14px !important;font-weight: bolder !important;">
+                                  <span [innerHTML]="currency.currency.curr_symb_html"></span>{{details['payable']}}
+                            </ion-col>
+
+                            <!-- weight scheme ( g ) -->
+
+                            <ion-col col-5  class="
+
+                            " *ngIf="details['scheme_type'] == 1" style="font-size: 14px !important;font-weight: bolder !important;">
+                              {{details['payable']}} g
+                            </ion-col>
+
+                            <ion-col col-5  class="
+
+                            " style="font-size: 14px !important;font-weight: bolder !important;" *ngIf="details['scheme_type'] == 3 && details['is_flexible_wgt'] != 1 && details['get_amt_in_schjoin'] == 1 && (details['set_as_max_from'] == null && details['set_as_min_from'] == null)">
+                              <span [innerHTML]="currency.currency.curr_symb_html"></span> {{details['max_amount']}}
+                            </ion-col>
+                            <ion-col col-5  class="
+
+                            " *ngIf="details['scheme_type'] == 3 && details['get_amt_in_schjoin'] != 1 && (details['flexible_sch_type'] == 1 || details['flexible_sch_type'] == 2 || details['flexible_sch_type'] == 5 || details['flexible_sch_type'] == 6)" style="font-weight: bold;color:red; font-size: 12px !important;">
+                              Min <span [innerHTML]="currency.currency.curr_symb_html"></span> {{details['min_amount']}} - Max <span [innerHTML]="currency.currency.curr_symb_html"></span> {{details['max_amount']}}
+
+                            </ion-col>
+                            <ion-col col-5  class="
+
+                            " *ngIf="details['scheme_type'] == 3 && details['get_amt_in_schjoin'] != 1 && (details['flexible_sch_type'] == 3 || details['flexible_sch_type'] == 4 || details['flexible_sch_type'] == 7)" style="font-weight: bold;color:red; font-size: 12px !important;">
+                              Min {{details['min_weight']}}g - Max {{details['eligible_weight']}}g
+
+                            </ion-col>
+
+                            <ion-col col-5  class="
+
+                            " *ngIf="details['scheme_type'] == 3 && details['get_amt_in_schjoin'] == 1 && (details['set_as_max_from'] != null && details['set_as_min_from'] != null)" style="font-weight: bold;color:red; font-size: 12px !important;">
+                              Min <span [innerHTML]="currency.currency.curr_symb_html"></span> {{details['min_amount']}} - Max <span [innerHTML]="currency.currency.curr_symb_html"></span> {{details['max_amount']}}
+
+                            </ion-col>
+
+                            </ion-row>
+
+                            <ion-row>
+                              <ion-col  class="
+
+                              ">
+                                {{details['account_name']}}
+                              </ion-col>
+
+                              <ion-col  class="
+
+                              " style="text-align: right !important;" *ngIf="details['is_flexible_wgt'] != 1">
+
+                                <span style="font-size: 12px !important;">Advance :
+                                   <ion-icon (click)="remove(i,details)" name="remove" style="border: 1px solid #ddd;"></ion-icon>&nbsp;
+                                   {{details['sel_due']}} &nbsp;
+                                   <ion-icon (click)="add(i,details)" name="add" style="border: 1px solid #ddd;"></ion-icon>
+                                  </span>
+                              </ion-col>
+                            </ion-row>
+                            </ion-col>
+
+                    </ion-row>
+                </span>
+
+                <!-- weight scheme -->
+
+                <ion-row *ngIf="details['scheme_type'] == 1 && details['is_flexible_wgt'] == 1" nowrap
+                    style="overflow-x: auto !important;">
+                    <ion-col  class="
+
+                    " *ngFor="let item of details['tempweightcolor'];let idx=index"
+                        (click)="flex(item,i,details,idx)"
+                        [ngClass]="(details['cc'] == true && idx == details['sub'] || tog[i] == true && details['cc'] != true && idx != details['sub'] && details['tempweightcolor'].length - 1 == idx) ? 'one':'two'"
+                        col-3>
+                        <div style="color:#141143 !important;">
+                            {{item.weight}} g
+                        </div>
+                        <div style="border-bottom: 1px solid lightgray;margin: 4px !important;"></div>
+                        <div>
+                            <b style="color:#141143 !important;"><span [innerHTML]="currency.currency.curr_symb_html"></span> {{item.rate | number}} </b>
+                        </div>
+                    </ion-col>
+                </ion-row>
+
+
+                <ion-row *ngIf="(details['scheme_type'] == 3 && details['flexible_sch_type'] == 7 &&  details['firstPayamt_as_payamt'] == 0 )" nowrap style="overflow-x: auto !important;">
+                  <ion-col  class="
+
+                  " *ngFor="let item of details['tempweightcolor'];let idx=index" (click)="flex(item,i,details,idx)" [ngClass]="(details['cc'] == true && idx == details['sub'] || tog[i] == true && details['cc'] != true && idx != details['sub'] && details['tempweightcolor'].length - 1 == idx) ? 'one':'two'"
+                      col-3>
+                      <div>
+
+                          {{item.weight}} g
+
+                      </div>
+                      <div style="border-bottom: 1px solid lightgray;margin: 4px !important;"></div>
+                      <div>
+                          <b><span [innerHTML]="currency.currency.curr_symb_html"></span> {{item.rate}} </b>
+                      </div>
+
+                  </ion-col>
+                  </ion-row>
+
+
+                <ion-row *ngIf="(details['scheme_type'] == 3 &&  details['firstPayamt_as_payamt'] == 0 && details['flexible_sch_type'] !=7)">
+                    <ion-col col-1>
+
+                    </ion-col>
+                    <ion-col col-6 style="margin: auto !important;">
+                        <ion-row style="color:#141143 !important;">Enter Payable Amount </ion-row>
+                        <ion-row *ngIf="details['err'] == true"
+                        style="color:red !important;font-weight: bolder;color:red;font-size: x-small;">Please Enter Valid Amount
+                        </ion-row>
+
+                        <ion-row *ngIf="details['err'] == 'multi' && details['flexible_sch_type'] !=4"
+                        style="color:red !important;font-weight: bolder;color:red;font-size: x-small;">Please Enter
+                            {{details['flx_denomintion']}} multiplies.</ion-row>
+
+                    </ion-col>
+
+                    <ion-col col-5>
+                        <ion-input (tap)="check(i,details)"
+                            [readonly]="details['read'] == false && details['min_amount'] == details['max_amount'] && (details['current_paid_installments'] >= details['set_as_min_from'] &&   details['set_as_max_from'] >= details['current_paid_installments'])"
+                            style="border:1px solid #d4d0d0;color:#141143 !important;" type="number" (keyup)="onKeyUp($event)"
+                            [(ngModel)]="details['prev']" (ngModelChange)="check(i,details)"></ion-input>
+
+                    </ion-col>
+                </ion-row>
+
+                <ion-row
+                    *ngIf="details['scheme_type'] == 3 && ( details.flexible_sch_type == 3 || details.flexible_sch_type == 4 || details.flexible_sch_type == 6 )">
+                    <ion-col col-1>
+
+                    </ion-col>
+                    <ion-col col-7 style="color:#141143 !important;">
+                        Equivalent Weight :
+                    </ion-col>
+                    <ion-col style="color:#141143 !important;font-weight: bolder;color:red" col-4>
+                        {{details['prev'] / details['metal_rate'] | number }} Grm
+                    </ion-col>
+                </ion-row>
+                <ion-row
+                    *ngIf="details['scheme_type'] == 3 && ( details.flexible_sch_type == 2 || details.flexible_sch_type == 3 || details.flexible_sch_type == 6 ) ">
+                    <ion-col col-1>
+                    </ion-col>
+                    <ion-col style="font-weight: bolder;color:#141143 !important;" col-11>
+                        <span style="color: red;">*</span> You can pay Max of {{details.eligible_weight}} Gm as per
+                        today gold rate
+                    </ion-col>
+                </ion-row>
+
+                <ion-row
+                    *ngIf="details['scheme_type'] == 3 && details.is_amt_min == Y && details.paid_installments > 1 ">
+                    <ion-col col-1>
+                    </ion-col>
+                    <ion-col style="font-weight: bolder;" col-11>
+                        <span style="color: #139801;font-weight: bold;">
+                            <ion-icon name="information-circle"></ion-icon> You could pay Min <span
+                                [innerHTML]="currency.currency.curr_symb_html"></span> {{details['min_amount']}} to get
+                            more benefits.
+                        </span>
+                    </ion-col>
+                </ion-row>
+
+                <!--       <ion-grid *ngIf="details['scheme_type'] != 3  && details['is_flexible_wgt'] != 1">
+        <ion-row>
+          <ion-col col-9 class="add"><span style="float: right;margin-top: 2px;">Installments :</span> </ion-col>
+          <ion-col col-1>
+            <ion-icon (click)="remove(i,details)" name="remove"></ion-icon>
+          </ion-col>
+          <ion-col col-1 style="text-align: center;padding-top:8px ">
+            {{details['sel_due']}}
+          </ion-col>
+          <ion-col col-1>
+            <ion-icon (click)="add(i,details)" name="add"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid> -->
+
+
+            </span>
+
+        </ion-card>
+
+    </span>
+</ion-content>
+
+<ion-footer *ngIf="currency != ''">
+    <ion-row>
+        <ion-col no-padding style="text-align: center;justify-content: center;">
+            <button (click)="pay()" style="background: #b08016;color:white;white-space: initial;font-weight: bold; text-transform: capitalize !important;"
+                ion-button class="button-login
+
+                " block color="dark">
+
+                <ion-row>
+                    <ion-col>Total </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <span [innerHTML]="currency.currency.curr_symb_html"></span> {{total}}
+                    </ion-col>
+                </ion-row>
+
+            </button>
+        </ion-col>
+        <ion-col no-padding style="text-align: center;justify-content: center;">
+            <button (click)="continue()" style="background: #391f07;color:white;text-transform: capitalize !important;" ion-button class="button-login
+
+            " block
+                color="dark">
+                Continue
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

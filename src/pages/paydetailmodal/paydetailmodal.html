@@ -1,0 +1,289 @@
+<!--
+  Generated template for the PaydetailmodalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-row>
+            <ion-col col-8>
+                <ion-title style="padding-top: 10px !important;letter-spacing:.5px !important;color: white !important;" >Pay EMA Detail</ion-title>
+            </ion-col>
+            <ion-col col-4>
+                <button style="background:#60340c !important;float:right;color: white;border-radius: 50px !important;letter-spacing: .5px !important;" class="
+
+                " (click)="close()" ion-button>Close</button>
+            </ion-col>
+        </ion-row>
+    </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content padding>
+
+    <ion-card *ngFor="let d of details">
+        <ion-row>
+            <ion-col style="margin: auto;" *ngIf="d['chit_number'] != null" col-5>
+                <div style="font-weight: bolder;" class=" ">
+                    {{d['chit_number']}}
+                </div>
+                <div *ngIf="d['scheme_type'] == '1'">
+                    <p style="font-weight: normal;" class="
+
+                    ">
+                        Wgt : {{d['eligible_weight']}} g
+                    </p>
+                </div>
+            </ion-col>
+            <ion-col style="padding-top: 15px !important;" *ngIf="d['chit_number'] == null" col-5>
+                <div style="font-weight: bolder;" class="
+
+                ">
+                    Not Allocated
+                </div>
+                <div *ngIf="d['scheme_type'] == '1'">
+                    <p style="font-weight: normal;" class="
+
+                    ">
+                        Wgt : {{d['eligible_weight']}} g
+                    </p>
+                </div>
+            </ion-col>
+
+
+            <ion-col *ngIf="d['scheme_type'] == '0'" col-7>
+
+                <div *ngIf="d['gst_type'] == '0'" style="font-weight: normal;float: right;">
+                    <p style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        <span> <span [innerHTML]="d.curr_symb_html"></span> {{d['max_amount'] * d['sel_due']}}</span>
+                    </p>
+                    <p *ngIf="fix(d['conv'],d['sel_due']) != 0" style="font-weight: normal;" class="
+
+                    ">
+                        Convenience fees : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['conv'],d['sel_due'])}}</span>
+                    </p>
+                    <p *ngIf="fix(d['disamt'],d['sel_due']) != 0" style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        Discount : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['disamt'],d['sel_due'])}}</span>
+                    </p>
+                    <p style="font-weight: normal;" *ngIf="d['gst'] != 0" class="
+
+                    ">
+                        GST : <span [innerHTML]="d.curr_symb_html"></span> {{d['gstcalc'] * d['sel_due']}}
+                    </p>
+
+
+                </div>
+                <div *ngIf="d['gst_type'] == '1'" style="font-weight: normal;float: right;" class="
+
+                ">
+                    <p style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        <span> <span [innerHTML]="d.curr_symb_html"></span> {{d['gstper'] * d['sel_due']}}</span>
+                    </p>
+                    <p *ngIf="fix(d['conv'],d['sel_due']) != 0" style="font-weight: normal;" class="
+
+                    ">
+                        Convenience fees : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['conv'],d['sel_due'])}}</span>
+                    </p>
+                    <p *ngIf="fix(d['disamt'],d['sel_due']) != 0" style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        Discount : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['disamt'],d['sel_due'])}}</span>
+                    </p>
+                    <p style="font-weight: normal;" *ngIf="d['gst'] != 0"  class="
+
+                    ">
+                        GST : <span [innerHTML]="d.curr_symb_html"></span> {{d['gstcalc'] * d['sel_due']}}
+                    </p>
+
+
+                </div>
+
+            </ion-col>
+
+
+
+            <ion-col *ngIf="d['scheme_type'] == '2'" col-7>
+
+                <div *ngIf="d['gst_type'] == '0'" style="font-weight: normal;float: right;">
+                    <p style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        <span> <span [innerHTML]="d.curr_symb_html"></span> {{d['max_amount'] * d['sel_due']}}</span>
+                    </p>
+                    <p *ngIf="fix(d['conv'],d['sel_due']) != 0" style="font-weight: normal;" class="
+
+                    ">
+                        Convenience fees : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['conv'],d['sel_due'])}}</span>
+                    </p>
+                    <p *ngIf="fix(d['disamt'],d['sel_due']) != 0" style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        Discount : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['disamt'],d['sel_due'])}}</span>
+                    </p>
+                    <p style="font-weight: normal;" *ngIf="d['gst'] != 0" class="
+
+                    ">
+                        GST : <span [innerHTML]="d.curr_symb_html"></span> {{d['gstcalc'] * d['sel_due']}}
+                    </p>
+
+
+                </div>
+                <div *ngIf="d['gst_type'] == '1'" style="font-weight: normal;float: right;" class="
+
+                ">
+                    <p style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        <span> <span [innerHTML]="d.curr_symb_html"></span> {{d['gstper'] * d['sel_due']}}</span>
+                    </p>
+                    <p *ngIf="fix(d['conv'],d['sel_due']) != 0" style="font-weight: normal;" class="
+
+                    ">
+                        Convenience fees : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['conv'],d['sel_due'])}}</span>
+                    </p>
+                    <p *ngIf="fix(d['disamt'],d['sel_due']) != 0" style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        Discount : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['disamt'],d['sel_due'])}}</span>
+                    </p>
+                    <p style="font-weight: normal;" *ngIf="d['gst'] != 0" class="
+
+                    ">
+                        GST : <span [innerHTML]="d.curr_symb_html"></span> {{d['gstcalc'] * d['sel_due']}}
+                    </p>
+
+
+                </div>
+
+            </ion-col>
+            <ion-col *ngIf="d['scheme_type'] == '1'" col-7>
+
+                <div *ngIf="d['gst_type'] == '0'" style="font-weight: normal;float: right;" class="
+
+                ">
+                    <p style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        <span [innerHTML]="d.curr_symb_html"></span> {{d['max_wgt_rate'] * d['sel_due']}}
+                    </p>
+                    <p *ngIf="fix(d['conv'],d['sel_due']) != 0" style="font-weight: normal;"class="
+
+                    ">
+                        Convenience fees : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['conv'],d['sel_due'])}}</span>
+                    </p>
+                    <p *ngIf="fix(d['disamt'],d['sel_due']) != 0" style="font-weight: normal;text-align: end;"class="
+
+                    ">
+                        Discount : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['disamt'],d['sel_due'])}}</span>
+                    </p>
+                    <p style="font-weight: normal;" *ngIf="d['gst'] != 0"class="
+
+                    ">
+                        GST : <span [innerHTML]="d.curr_symb_html"></span> {{d['gstcalc'] * d['sel_due']}}
+                    </p>
+                </div>
+
+                <div *ngIf="d['gst_type'] == '1'" style="font-weight: normal;float: right;" class="
+
+                ">
+                    <p style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        <span [innerHTML]="d.curr_symb_html"></span> {{d['gstper'] * d['sel_due']}}
+                    </p>
+                    <p *ngIf="fix(d['conv'],d['sel_due']) != 0" style="font-weight: normal;" class="
+
+                    ">
+                        Convenience fees : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['conv'],d['sel_due'])}}</span>
+                    </p>
+                    <p *ngIf="fix(d['disamt'],d['sel_due']) != 0" style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        Discount : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['disamt'],d['sel_due'])}}</span>
+                    </p>
+                    <p style="font-weight: normal;" *ngIf="d['gst'] != 0" class="
+
+                    ">
+                        GST : <span [innerHTML]="d.curr_symb_html"></span> {{d['gstcalc'] * d['sel_due']}}
+                    </p>
+                </div>
+
+            </ion-col>
+            <ion-col *ngIf="d['scheme_type'] == '3'" col-7 class="
+
+            ">
+                <div *ngIf="d['gst_type'] == '0'" style="font-weight: normal;float: right;" class="
+
+                ">
+                    <p style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        <span [innerHTML]="d.curr_symb_html"></span> {{d['payable'] * d['sel_due']}}
+                    </p>
+                    <p *ngIf="fix(d['conv'],d['sel_due']) != 0" style="font-weight: normal;" class="
+
+                    ">
+                        Convenience fees : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['conv'],d['sel_due'])}}</span>
+                    </p>
+                    <p *ngIf="fix(d['disamt'],d['sel_due']) != 0" style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        Discount : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['disamt'],d['sel_due'])}}</span>
+                    </p>
+                    <p style="font-weight: normal;" *ngIf="d['gst'] != 0" class="
+
+                    ">
+
+                        GST : <span [innerHTML]="d.curr_symb_html"></span> {{d['gstcalc'] * d['sel_due']}}
+                    </p>
+                </div>
+                <div *ngIf="d['gst_type'] == '1'" style="font-weight: normal;float: right;">
+
+
+                    <p style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        <span [innerHTML]="d.curr_symb_html"></span> {{d['gstper'] * d['sel_due']}}
+                    </p>
+                    <p *ngIf="fix(d['conv'],d['sel_due']) != 0" style="font-weight: normal;" class="
+
+                    ">
+                        Convenience fees : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['conv'],d['sel_due'])}}</span>
+                    </p>
+                    <p *ngIf="fix(d['disamt'],d['sel_due']) != 0" style="font-weight: normal;text-align: end;" class="
+
+                    ">
+                        Discount : <span> <span [innerHTML]="d.curr_symb_html"></span> {{fix(d['disamt'],d['sel_due'])}}</span>
+                    </p>
+                    <p style="font-weight: normal;" *ngIf="d['gst'] != 0" class="
+
+                    ">
+
+                        GST : <span [innerHTML]="d.curr_symb_html"></span> {{d['gstcalc'] * d['sel_due']}}
+                    </p>
+                </div>
+            </ion-col>
+        </ion-row>
+
+    </ion-card>
+    <ion-row *ngIf="details.length > 0">
+
+        <ion-col>
+            <p style="float: right;font-weight: bold; color: white;" class="
+
+            ">
+                Payment Amount : &#8377; {{total}}
+            </p>
+        </ion-col>
+    </ion-row>
+</ion-content>

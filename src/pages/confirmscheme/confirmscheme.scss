@@ -1,0 +1,105 @@
+page-confirmscheme {
+    /* .scroll-content{
+    bottom:30px !important;
+
+    padding: 0px !important;
+} */
+    .card-content-md {
+        font-weight: bolder !important;
+    }
+    .checkbox-md .checkbox-icon {
+        border-radius: 10px !important;
+        width: 20px !important;
+        height: 20px !important;
+    }
+    .checkbox-md .checkbox-checked .checkbox-inner {
+        width: 8px !important;
+        height: 12px !important;
+    }
+    .alert-md .alert-sub-title {
+        color: maroon !important;
+    }
+    .termsfont {
+        font-size: small !important;
+        font-weight: normal !important;
+        text-align: justify;
+        list-style-type: square;
+        /* padding: 1% 4%; */
+        color: #a9a9a9 !important;
+    }
+    .joinbtn {
+        /*        background: linear-gradient(to top, #E8B76A, #FBD597) !important;
+        color: #000 !important; */
+        background: #b26f07 !important;
+        color: white !important;
+        font-weight: bold;
+        border: none !important;
+        width: 90% !important;
+        font-size: 12px !important;
+        text-transform: capitalize !important;
+        letter-spacing: 1.5px !important;
+        border-radius: 50px !important;
+    }
+    .scroll-content {
+        /*
+        top: 60px !important; */
+        padding: 0px !important;
+        /* margin-top: 60px !important; */
+        /*   bottom: 30px */
+        padding-bottom: 30px !important;
+    }
+    .card-md {
+        padding: 4px !important;
+        width: -webkit-fill-available !important;
+    }
+    .badge-md {
+        border-radius: 100%;
+        color: black;
+        left: 24px;
+        bottom: 28px;
+        position: absolute;
+        background-color: #f9f9a6;
+    }
+    ion-badge {
+        font-size: 1rem !important;
+    }
+    .button-class {
+        background-color: red !important;
+    }
+    .bottom-line:after {
+        content: "";
+        display: block;
+        margin: 0 auto;
+        width: 10%;
+        padding-top: 5px;
+        border-bottom: 1px solid #b2b2b2;
+    }
+    .selectclass{
+        display: -webkit-box !important;
+        display: -webkit-flex !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+        overflow: hidden !important;
+        max-width: 100% !important;
+
+    }
+/*     .toolbar .toolbar-title {
+        color: #e1e1e1 !important;
+        text-transform: capitalize !important;
+        font-weight: 100 !important;
+        letter-spacing: 1.5px !important;
+    }
+
+        .toolbar .toolbar-background {
+            background-color: #b26f07 !important;
+        }
+        .toolbar .bar-button-default {
+            color: #e1e1e1 !important;
+            margin-left: -10px !important;
+        }
+ */
+
+        .bar.bar-stable .title, .item h2[item-title], .item h3[item-subtitle], .item h2[subitem-title], .item h3[subitem-subtitle], h2[swiped-item-title], ion-card h2[card-title], ion-card h3[card-subtitle], ion-card p[card-body-text], h2[search-bar-title], ion-title .toolbar-title, .main-menu ion-label, .submenu ion-label, body, ion-label, a, body, h1, h2, h3, h4, h5, h6, label, p {
+            font-weight: 300 !important;
+        }
+}

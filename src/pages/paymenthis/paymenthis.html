@@ -1,0 +1,201 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-row>
+            <ion-col>
+                <button  (click)="goBack()"
+                    style="background: transparent !important;color: black !important;font-size: 20px !important;">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col style="margin: auto !important;margin-left: -10px !important;">
+                <ion-title style="font-size: small !important;text-transform:none !important;" >Payment History</ion-title>
+            </ion-col>
+            <ion-col style="text-align: end !important;">
+                <span style="font-weight: bold !important;text-transform: uppercase !important;font-size:initial !important;
+
+                color: black !important;"  end>V-{{app_version}}</span>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+
+<!-- <ion-header>
+    <ion-navbar>
+        <ion-row>
+            <ion-col>
+                <button  (click)="goBack()"
+                    style="background: transparent !important;color: #e1e1e1 !important;font-size: 20px !important;">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col style="margin: auto !important;margin-left: -10px !important;">
+                <ion-title style="font-size: small !important;text-transform:none !important;" >Payment History</ion-title>
+            </ion-col>
+            <ion-col style="text-align: end !important;">
+                <span style="font-weight: bold !important;text-transform: uppercase !important;font-size:initial !important;
+
+                color: #e1e1e1 !important;"  end>V-{{app_version}}</span>
+            </ion-col>
+        </ion-row>
+    </ion-navbar>
+  </ion-header> -->
+
+
+<ion-content padding>
+    <ion-row>
+        <ion-searchbar [(ngModel)]="input" placeholder="Search by Status or Account No." (ionChange)="search()"></ion-searchbar>
+    </ion-row>
+
+    <ion-row>
+        <ion-col style="margin:10px; color: #141143;" *ngIf="history.length > 0" class="
+
+          ">
+            Transactions : <span style="font-weight: bold;"> {{history.length}} </span>
+        </ion-col>
+        <ion-col style="margin:10px; color: #141143; text-align: -webkit-right" class="
+
+        ">
+            Pending Dues :
+            <ion-badge style="background: #b98840 !important;">{{pending}}</ion-badge>
+        </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="currency != '' && type == 'amt' ">
+        <ion-col style="padding-left: 15px; color: #141143;" class="
+
+        ">
+            Total Amount Paid : <span style="font-weight: bold;"><span
+                    ></span>₹ {{totalamount['total_amount']}} </span>
+        </ion-col>
+    </ion-row>
+    <ion-row *ngIf="currency != ''  && type == 'wgt'" class="
+
+    ">
+        <ion-col style="padding-left: 15px; color: #141143;">
+            Total Weight Paid : <span style="font-weight: bold;"> {{totalwei['total_weight']}} Gm </span>
+        </ion-col>
+    </ion-row>
+
+    <div *ngIf="(type == 'amt' || type == 'wgt') && (history =='')" style="margin-top: 50% !important;" class="
+
+    ">
+        <p style="text-align: center !important; color: #141143;">You don't have any Payments</p>
+    </div>
+
+    <ion-card *ngFor="let s of history" style="border-radius: 10px !important;padding-top: 10px !important;padding-bottom: 10px !important;padding-left: 5px !important;padding-right: 5px !important;">
+        <ion-row>
+            <ion-col col-7 style="font-weight:bold;color: #141143 !important;" class="
+
+            ">
+                {{s['scheme_acc_number']}}
+            </ion-col>
+            <ion-col col-1 *ngIf="s['allow_print'] == 1" (click)="takeprint(s['pay_printable'])" class="
+
+            ">
+                <ion-icon name="print"></ion-icon>
+            </ion-col>
+            <ion-col col-1 *ngIf="s['allow_print'] != 1" class="
+
+            ">
+            </ion-col>
+            <ion-col col-4 class="
+
+            ">
+                <ion-badge style="float: right !important;height: 25px !important;padding-top: 5px !important;letter-spacing: 1px !important;" class="
+
+                "
+                    [ngClass]="s['payment_status'] == 'Paid' ? 'one':'' || s['payment_status'] == 'Pending' ? 'two':'' || s['payment_status'] == 'Failed' ? 'three':'' || s['payment_status'] == 'Yet to Approve' ? 'four':'' ">
+                    {{s['payment_status']}}</ion-badge>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="
+
+            " style="color: #141143 !important;">
+                TxnID : {{s['id_transaction']}}
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-7>
+                <ion-row>
+                    <ion-col col-5 style="font-weight:bold;color: #141143 !important;" class="
+
+                    ">
+                        Gold rate
+                    </ion-col>
+                    <ion-col col-7 class="
+
+                    " style="color: #141143 !important;">
+                        <span ></span>₹&nbsp; {{s['metal_rate']}}
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="s['metal_weight'] > 0">
+                    <ion-col col-5 style="font-weight:bold;color: #141143 !important;" class="
+
+                    ">
+                        Weight
+                    </ion-col>
+                    <ion-col col-7 class="
+
+                    " style="color: #141143 !important;">
+                        {{s['metal_weight']}} g
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="s.branch_settings == 1">
+                    <ion-col col-5 style="font-weight:bold;color: #141143 !important;" class="
+
+                    ">
+                        Paid at
+                    </ion-col>
+                    <ion-col col-7 class="
+
+                    " style="text-transform:capitalize !important;color: #141143 !important;">
+                        {{s['branch_name']}}
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col col-4>
+                <ion-row>
+                    <ion-col style="font-weight: bold;" class="
+
+                    ">
+                        <ion-row style="color: #141143 !important;">
+                            <span ></span>₹&nbsp; {{s['payment_amount']}}
+                        </ion-row>
+                        <ion-row style="font-weight: normal;color: #141143 !important;" (click)="more(s)"
+                            *ngIf="(s.payment_type=='Payu Checkout' && s.add_charges!= NULL && s.add_charges!= 0.00) || (s.gst != null && s.gst!=0.00) || (s.discount != null && s.discount!=0.00)" class="
+
+                            ">
+
+                            View More
+
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class="
+
+                    " style="color: #141143 !important;">
+                        {{s['date_payment']}}
+                    </ion-col>
+                </ion-row>
+
+                <!-- <ion-row *ngIf="s['allow_print'] == 1">
+                    <ion-col (click)="downloadPDF(s['print_url'],s['payment_name'])">
+                        <ion-icon name="download"></ion-icon>
+                    </ion-col>
+                </ion-row> -->
+
+            </ion-col>
+            <ion-col
+                *ngIf="(s.payment_type=='Payu Checkout' && s.add_charges!= NULL && s.add_charges!= 0.00) || (s.gst != null && s.gst!=0.00) || (s.discount != null && s.discount!=0.00)"
+                (click)="more(s)" col-1>
+                <ion-icon name="information-circle"></ion-icon>
+            </ion-col>
+            <ion-col
+                *ngIf="(s.payment_type!='Payu Checkout' || s.add_charges== NULL || s.add_charges== 0.00) && (s.gst == null || s.gst==0.00) && (s.discount == null || s.discount==0.00)" col-1></ion-col>
+        </ion-row>
+    </ion-card>
+</ion-content>

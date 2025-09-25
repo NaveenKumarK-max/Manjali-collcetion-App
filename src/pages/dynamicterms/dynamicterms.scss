@@ -1,0 +1,30 @@
+page-dynamicterms {
+    .scroll-content {
+        margin-top: 55px !important;
+        bottom: 30px !important;
+        padding: 10px !important;
+    }
+    .bar.bar-stable .title,
+    .item h2[item-title],
+    .item h3[item-subtitle],
+    .item h2[subitem-title],
+    .item h3[subitem-subtitle],
+    h2[swiped-item-title],
+    ion-card h2[card-title],
+    ion-card h3[card-subtitle],
+    ion-card p[card-body-text],
+    h2[search-bar-title],
+    ion-title .toolbar-title,
+    body,
+    a,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        font-weight: normal !important;
+    }
+}

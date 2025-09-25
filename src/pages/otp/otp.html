@@ -1,0 +1,113 @@
+<!--
+  Generated template for the OtpPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>otp</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content   text-center class="loginbg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <ion-row *ngIf="msg != ''">
+        <ion-col>
+            <ion-label class="NotoSerif-Regular" style="float: left;font-weight: normal;color: red;">{{msg}}</ion-label>
+
+        </ion-col>
+    </ion-row> -->
+
+    <ion-row style="border: none !important;">
+        <ion-col style="text-align: -webkit-center !important;">
+            <img style="margin-top: 5% !important;height: 180px;" src='assets/img/otp.svg' />
+        </ion-col>
+    </ion-row>
+    <br>
+
+
+
+
+<!--
+    <ion-row style="padding-left: 16px !important;padding-right: 16px !important;" novalidate>
+        <ion-col>
+            <ion-item>
+                <ion-input type="number" [(ngModel)]="temp['userotp']" placeholder="Enter 6 digit OTP"></ion-input>
+            </ion-item>
+        </ion-col>
+    </ion-row> -->
+    <ion-row class="
+
+    " style="text-align: center !important;display: flex !important;justify-content: center !important;margin-top: -15px !important;margin-bottom: 20px !important;">
+      OTP has been sent to you on your <br>mobile phone. Please enter it below
+    </ion-row>
+
+
+    <ion-row novalidate  style="padding-left: 16px !important;padding-right: 16px !important;">
+      <ion-col class="
+
+      "  style="display: flex !important;justify-content: center !important;margin-top: 5px !important;margin-bottom: 5px !important;"><ion-input class="
+
+      "  style="font-size: 15px !important;text-align: center !important;font-size: 17px !important;max-width: 50% !important;width: 70% !important;border: 1px solid !important;border-radius: 8px !important;padding-top: 20px !important;padding-bottom: 20px !important;" type="number" [(ngModel)]="temp['userotp']" placeholder="Enter OTP"></ion-input></ion-col>
+    </ion-row>
+
+
+    <ion-row style="border: none !important;">
+      <ion-col class="
+
+      " style="text-align: -webkit-center !important;">
+          <button (click)="submit()" class="
+
+          " style="font-weight: 600 !important;letter-spacing: .6px !important;background: #60340c !important;color: white !important;border: none !important;width: 12pc !important;height: 40px !important;border-radius: 50px;" ion-button class="button-login" block color="dark">
+              Submit</button>
+      </ion-col>
+  </ion-row>
+
+  <ion-row style="border: none !important;">
+    <ion-col class="
+
+    " style="text-align: -webkit-center !important;">
+        <button (click)="resend()"  [disabled]="data !='1'" class="
+
+        " style="font-weight: 600 !important;letter-spacing: .6px !important;background-color: white !important;color: #60340c !important;border: none !important;width: 12pc !important;height: 40px !important;border-radius: 50px;box-shadow: none !important;" ion-button class="button-login" block color="dark">
+          Resend OTP</button>
+    </ion-col>
+</ion-row>
+
+
+
+    <span class="
+
+    " style="color: black;font-size: 12px !important;">Your OTP will expire in</span> <span class="
+
+    " style="color: #8030d1;font-size: 13px !important;">{{countDown | async | formattime}}</span>
+
+
+    <!-- <p *ngIf="page!='fixedrate' && page!='existing' && fromforgot !='Forgotpin' && page!='directmobile'" class="
+
+      " (click)="sign()" style="text-align: center;font-weight: normal;color: #2e2e2e;">Click here to Sign In</p> -->
+
+    <ion-row style="border: none !important;" *ngIf="page!='fixedrate' && page!='existing' && fromforgot !='Forgotpin' && page!='directmobile'">
+      <ion-col class="
+
+      " style="text-align: -webkit-center !important;">
+          <button (click)="sign()"  class="
+
+          " style="font-weight: 600 !important;letter-spacing: .6px !important;background-color: white !important;color: #60340c !important;border: none !important;width: 12pc !important;height: 40px !important;border-radius: 50px;box-shadow: none !important;" ion-button class="button-login" block color="dark">
+            Click here to Sign In</button>
+      </ion-col>
+  </ion-row>
+
+    <ion-row text-center >
+        <ion-col class="
+
+        " style="font-weight: bold;color:black; margin: auto;font-size: 10px !important;">
+            V-{{app_version}}
+        </ion-col>
+    </ion-row>
+
+</ion-content>

@@ -1,0 +1,37 @@
+page-faq {
+    .scroll-content {
+        bottom: 30px !important;
+        padding: 5px !important;
+        margin-top: 55px !important;
+        background-size: cover;
+        /*  background-image: url(../assets/img/login_bg.png) !important; */
+        max-width: 100% !important;
+        max-height: 100% !important;
+    }
+    .item-md {
+        padding-left: 5px !important;
+    }
+    .label-md {
+        white-space: initial !important;
+        margin: 13px 8px 5px 0 !important;
+    }
+    .item-md.item-block .item-inner {
+        padding: 0px !important;
+        border: none !important;
+    }
+    b,
+    strong {
+        padding-left: 5px !important;
+        color: black;
+    }
+    h3 {
+        color: black !important;
+    }
+    .termsfont {
+        font-size: small !important;
+        font-weight: normal !important;
+        text-align: justify;
+        list-style-type: square;
+        color: black;
+    }
+}

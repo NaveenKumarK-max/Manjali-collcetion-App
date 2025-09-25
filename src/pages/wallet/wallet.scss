@@ -1,0 +1,18 @@
+page-wallet {
+    .card-md {
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        margin: 4px !important;
+        width: -webkit-fill-available !important;
+    }
+    .card-header-md {
+        padding: 10px !important;
+    }
+    .card-content-md {
+        padding: 5px !important;
+    }
+    .scroll-content {
+        bottom: 30px !important;
+        padding: 0px !important;
+    }
+}

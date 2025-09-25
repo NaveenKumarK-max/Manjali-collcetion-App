@@ -1,0 +1,99 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Reset Password</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding text-center class="loginbg">
+
+    <ion-row>
+        <ion-col style="text-align: -webkit-center !important;">
+            <!-- <img style="height: 120px;margin-top: 2% !important;" src='assets/img/IntroducingLogo.svg' /> -->
+        </ion-col>
+    </ion-row>
+
+    <ion-row style="border: none !important;">
+      <ion-col style="text-align: -webkit-center !important;">
+          <img style="margin-top: 5% !important;height: 180px;" src='assets/img/otp.svg' />
+      </ion-col>
+  </ion-row>
+
+
+
+    <ion-row novalidate  style="margin-top: 0px !important; padding-left: 16px !important; padding-right: 16px !important;">
+      <ion-col style="margin: auto !important;text-align: center !important;"><h6 class="
+
+        " style="margin: auto !important;font-size: 15px !important;">Mobile Number :</h6></ion-col>
+    </ion-row>
+
+    <ion-row novalidate padding>
+      <ion-col class="
+
+      "  style="display: flex !important"><ion-input class="
+
+      "  style="margin-right: 10px !important;margin-left: 10px !important;font-size: 15px !important;text-align: center !important;font-size: 17px !important;width: 90% !important;border: 0.5px solid #60340c !important;border-radius: 10vw !important;padding-top: 10px !important;padding-bottom: 10px !important;" (keyup)="mobonKeyUp($event)" type="tel" [formControl]="mobileno" placeholder="Enter Registered Mobile Number" name="usrnm" maxlength="10"></ion-input></ion-col>
+    </ion-row>
+
+    <!-- <ion-row novalidate style="border: 0.5px solid #60340c !important;border-radius: 10vw !important;">
+      <ion-input class="NotoSerif-Italic" (keyup)="mobonKeyUp($event)" type="tel" [formControl]="mobileno" placeholder="Enter Registered Mobile Number" name="usrnm" maxlength="10"></ion-input>
+  </ion-row> -->
+
+
+    <!-- <ion-row style="border: none !important;">
+        <ion-col style="text-align: -webkit-center !important;">
+            <button (click)="otp()" style="background: #2c2e6b !important;color:white !important;width: 50% !important;" ion-button class="button-login" block color="dark">
+                Proceed</button>
+        </ion-col>
+    </ion-row> -->
+
+    <ion-row style="border: none !important;">
+      <ion-col class="
+
+      " style="text-align: -webkit-center !important;">
+          <button (click)="otp()" class="
+
+          " style="font-weight: 600 !important;letter-spacing: .6px !important;background: #60340c !important;color: white !important;border: none !important;width: 12pc !important;height: 40px !important;border-radius: 50px;" ion-button class="button-login" block color="dark">
+              Submit</button>
+      </ion-col>
+  </ion-row>
+
+    <!--
+    <button (click)="otp()" style="background: #ffab08;" ion-button class="button-login" block color="dark" type="submit">
+        Proceed</button> -->
+
+    <!-- <ion-row style="font-weight: bolder; color: #2c2e6b;">
+        <ion-col col-2>
+
+        </ion-col>
+        <ion-col col-3 (click)="in()">
+            Sign In
+        </ion-col>
+        <ion-col col-2>
+            /
+        </ion-col>
+        <ion-col col-3 (click)="up()">
+            Sign Up
+        </ion-col>
+        <ion-col col-2>
+
+        </ion-col>
+    </ion-row> -->
+
+    <ion-row style="justify-content: center !important;">
+      <span (click)="in()" class="
+
+      " style="font-size: 15px !important ;">
+        Login
+      </span>
+    </ion-row>
+
+
+</ion-content>
+<ion-footer>
+    <ion-row text-center>
+        <ion-col style="font-weight: bold;color:black; margin: auto;font-size: 10px !important;">
+            V-{{app_version}}
+        </ion-col>
+    </ion-row>
+
+</ion-footer>

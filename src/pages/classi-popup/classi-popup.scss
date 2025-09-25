@@ -1,0 +1,42 @@
+ion-modal.popupmodal {
+    @media (min-width: 300px) and (min-height: 500px) {
+        ion-backdrop {
+            visibility: visible;
+        }
+    }
+    .row {
+        padding: 5px !important;
+    }
+    .modal-wrapper {
+        position: absolute;
+        overflow: hidden;
+        max-width: 350px !important;
+        height: 340px !important;
+        width: 340px !important;
+        border-radius: 15px;
+        width: 75vw;
+        height: 37vh;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border: 0;
+        box-shadow: 0 16px 20px rgba(0, 0, 0, .4);
+        background-color: #fafafa;
+    }
+    .joinbtn {
+        border: none !important;
+        background: linear-gradient(to top, #E8B76A, #FBD597) !important;
+        border-radius: 5px;
+        padding-top: 5px;
+        font-weight: 300 !important;
+        color: #000 !important;
+        /*     height: 100% !important; */
+        width: 40% !important;
+    }
+}
+
+
+/*     page-classi-popup {
+} */

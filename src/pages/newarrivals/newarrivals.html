@@ -1,0 +1,42 @@
+<!--
+  Generated template for the CollectionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>New Arrivals</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <p style="text-align: center; color: black;" *ngIf="new.length == 0">No New Arrivals</p>
+
+    <ion-card (click)="detail(n)" *ngFor="let n of new">
+        <ion-row>
+            <ion-col col-4>
+                <img style="height: 80px !important;width: 80px !important;" src="{{n.new_arrivals_img_path}}">
+
+            </ion-col>
+            <ion-col col-8 style="font-weight: bolder; padding-top: 33px;">
+                {{n.name}}<br> <span *ngIf="n.show_rate == 1">  {{currency['currency']['currency_symbol']}}&nbsp;{{n.price}} </span>
+            </ion-col>
+
+        </ion-row>
+
+    </ion-card>
+</ion-content>
+<!-- <ion-footer>
+<ion-toolbar color="primary">
+     <ion-buttons>
+      <button ion-button  (click)="openModal()">
+        <ion-icon name="options"></ion-icon> Filter
+      </button>
+    </ion-buttons> 
+</ion-toolbar>
+</ion-footer> -->

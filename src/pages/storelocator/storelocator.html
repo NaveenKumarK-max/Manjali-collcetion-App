@@ -1,0 +1,135 @@
+<!--
+  Generated template for the StorelocatorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Our Stores</ion-title>
+    </ion-navbar>
+
+    <!--     <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar> -->
+
+</ion-header>
+
+
+<ion-content>
+
+    <!--     <ion-row style="text-align: center !important;">
+        <ion-col>
+            <h4>Our Stores</h4>
+        </ion-col>
+    </ion-row> -->
+
+    <!--     <ion-card *ngFor="let detail of branchdetail">
+
+              <div *ngIf="detail['img'] != '' && detail['img'] != null ">
+            <img src="{{baseurl}}{{ detail['img'] }}" />
+        </div>
+
+        <ion-card-content>
+
+            <ion-card-title *ngIf="detail['name'] != '' && detail['name'] != 'null'">
+                {{detail['name'] }}
+            </ion-card-title>
+
+            <p *ngIf="detail['address1'] != '' && detail['address1'] != 'null' ">{{detail['address1'] }}</p>
+            <p *ngIf="detail['address2'] != '' && detail['address2'] != 'null' ">{{detail['address2'] }}</p>
+            <p *ngIf="(detail['city'] != '' && detail['city'] != 'null') && (detail['pincode'] != '' && detail['pincode'] != 'null') "> {{detail['city'] }} - {{detail['pincode'] }}</p>
+            <p *ngIf="detail['phone'] != '' && detail['phone'] != 'null' ">
+                <a style="text-align: justify !important;font-weight: bolder !important; color: #387ef5 !important;text-decoration: none !important;" href="tel:{{detail['phone'] }}"> {{detail['phone'] }}</a>
+            </p>
+
+            <p *ngIf="detail['mobile'] != '' && detail['mobile'] != 'null' ">
+                <a style="text-align: justify !important;font-weight: bolder !important; color: #387ef5 !important;text-decoration: none !important;" href="tel:{{detail['mobile'] }}"> {{detail['mobile'] }}</a>
+            </p>
+
+        </ion-card-content>
+
+        <ion-row no-padding *ngIf="detail['map_url'] != '' && detail['map_url'] != 'null' ">
+            <ion-col style="text-align: center !important;" (click)="viewmap(detail['map_url'])">
+                <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='pin'></ion-icon>
+          View Map
+        </button>
+            </ion-col>
+        </ion-row>
+
+    </ion-card> -->
+
+
+    <ion-card *ngFor="let detail of branchdetail">
+        <div *ngIf="detail['img'] != '' && detail['img'] != null ">
+            <img src="{{baseurl}}{{ detail['img'] }}" />
+        </div>
+
+        <ion-card-header style="padding: 0px !important;">
+            <ion-row *ngIf="detail['name'] != '' && detail['name'] != 'null' ">
+                <ion-col col-2>
+                    <img style="height: 20px !important;" src='assets/img/address.svg' />
+                </ion-col>
+                <ion-col col-10>
+                    <h2 style="font-weight: bolder !important;">{{detail['name'] }} </h2>
+                </ion-col>
+            </ion-row>
+        </ion-card-header>
+
+        <ion-row>
+            <ion-col col-2></ion-col>
+            <ion-col col-10>
+                <ion-row *ngIf="detail['address1'] != '' && detail['address1'] != 'null' ">
+                    <ion-col>
+                        {{detail['address1'] }}
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="detail['address2'] != '' && detail['address2'] != 'null' ">
+                    <ion-col>
+                        {{detail['address2'] }}
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="(detail['city'] != '' && detail['city'] != 'null') && (detail['pincode'] != '' && detail['pincode'] != 'null') ">
+                    <ion-col>
+                        {{detail['city'] }} - {{detail['pincode'] }}
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="(detail['state'] != '' && detail['state'] != 'null') && (detail['country'] != '' && detail['country'] != 'null') ">
+                    <ion-col>
+                        {{detail['state']}} . {{detail['country']}}
+                    </ion-col>
+                </ion-row>
+
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col col-2>
+                <img style="height: 20px !important;" src='assets/img/call_icon.svg' />
+            </ion-col>
+            <ion-col col-10>
+                <h2 style="font-weight: bolder !important;">Call Now </h2>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col col-2></ion-col>
+            <ion-col col-10>
+                <a *ngIf="detail['phone'] != ''" style="text-align: justify !important;font-weight: bolder !important; color: #387ef5 !important;text-decoration: none !important;" href="tel:{{detail['call_prefix']}}{{detail['phone']}}">{{detail['call_prefix']}}{{detail['phone']}}</a><br><br>
+                <a *ngIf="detail['mobile'] != ''" style="text-align: justify !important;font-weight: bolder !important; color: #387ef5 !important;text-decoration: none !important;" href="tel:{{detail['call_prefix']}}{{detail['mobile']}}">{{detail['call_prefix']}}{{detail['mobile']}}</a><br>
+                <a *ngIf="detail['tollfree'] != ''" style="text-align: justify !important;font-weight: bolder !important; color: #387ef5 !important;text-decoration: none !important;" href="tel:{{detail['tollfree']}}">{{detail['tollfree']}}</a>
+            </ion-col>
+        </ion-row>
+
+        <ion-row no-padding *ngIf="detail['map_url'] != '' && detail['map_url'] != 'null' ">
+            <ion-col style="text-align: center !important;" (click)="viewmap(detail['map_url'])">
+                <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='pin'></ion-icon>
+          View Map
+        </button>
+            </ion-col>
+        </ion-row>
+
+    </ion-card>
+
+</ion-content>

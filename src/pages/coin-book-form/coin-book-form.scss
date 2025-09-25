@@ -1,0 +1,33 @@
+page-coin-book-form {
+    .scroll-content {
+        bottom: 30px !important;
+        padding-bottom: 0px !important;
+        /* background-size: cover;
+        background-image: url(../assets/img/login_bg.png) !important;
+        max-width: 100% !important;
+        max-height: 100% !important; */
+    }
+    .item-md {
+        /* padding-left: 16px; */
+        padding: 0px !important;
+        border: 1px solid lightgray !important;
+        margin-bottom: 5px !important;
+    }
+    .row {
+        border: 1px solid lightgray !important;
+        margin-bottom: 5px !important;
+    }
+    .item-input ion-input,
+    .item-input ion-textarea {
+        position: static;
+        padding-left: 12px !important;
+    }
+    /*     .item-input ion-input,
+    .item-input ion-textarea {
+        position: static;
+        padding-left: 12px !important;
+    } */
+    .label-md {
+        margin: 10px 2px 2px 3px !important;
+    }
+}

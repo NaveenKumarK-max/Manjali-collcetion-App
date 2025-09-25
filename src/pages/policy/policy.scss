@@ -1,0 +1,15 @@
+page-policy {
+    .scroll-content {
+        bottom: 30px !important;
+        margin-top: 55px !important;
+        padding: 2px !important;
+    }
+    .row {
+        padding: 4px !important;
+    }
+    .item-md ion-thumbnail ion-img,
+    .item-md ion-thumbnail img {
+        width: 110px !important;
+        height: 110px !important;
+    }
+}

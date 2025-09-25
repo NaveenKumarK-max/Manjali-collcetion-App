@@ -1,0 +1,64 @@
+page-paymenthis {
+    .scroll-content{
+        margin-top: 55px !important;
+        bottom:30px !important;
+        padding: 4px !important;
+        background-color: #e1e1e1 !important;
+
+    }
+    .searchbar-md .searchbar-input{
+        background-color: #b26f07 !important;
+        border-radius: 10px;
+
+        color: white !important;
+    }
+    .searchbar-md{
+        padding: 0px !important;
+    }
+    .one{
+        background: green !important;
+        float: right;
+    }
+    .two{
+        background: #CC6611 !important;
+        float: right;
+    }
+    .three{
+        background: red !important;
+        float: right;
+    }
+    .four{
+        // background: red !important;
+        float: right;
+    }
+    .col{
+        font-weight: normal;
+    }
+
+/*     .toolbar .toolbar-title {
+        color: #e1e1e1 !important;
+
+        text-transform: capitalize !important;
+        font-weight: 100 !important;
+        letter-spacing: 1.5px !important;
+    }
+
+        .toolbar .toolbar-background {
+            background-color: #b26f07 !important;
+        }
+        .toolbar .bar-button-default {
+            color: #e1e1e1 !important;
+            margin-left: -10px !important;
+        } */
+        .text-input-md {
+            margin: 10px 0px !important;
+            padding: 0;
+            // text-align: center;
+
+            font-weight:500 !important;
+        }
+        .header {
+        background-color: #e1e1e1 !important;
+
+        }
+}

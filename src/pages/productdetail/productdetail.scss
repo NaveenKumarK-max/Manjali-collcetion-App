@@ -1,0 +1,19 @@
+page-productdetail {
+    .scroll-content {
+        bottom: 60px !important;
+        margin-bottom: 0px !important
+        /*  background: #f6f2f3 !important; */
+        /* margin-top: 75px !important; */
+    }
+    .productdetail {
+        background-color: #fff;
+        background-size: cover;
+        height: 350px;
+        margin: 0 auto;
+        /*  width: 330px; */
+    }
+    .alert-md .alert-title {
+        font-size: 21px !important;
+        text-align: center !important;
+    }
+}

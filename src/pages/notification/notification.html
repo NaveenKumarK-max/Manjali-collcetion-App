@@ -1,0 +1,45 @@
+<!--
+  Generated template for the NotificationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Notification</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <p *ngIf="list.length == 0" style="text-align: center; color: black;">Your Notification List is Empty..</p>
+
+    <ion-card (click)="detail(i)" *ngFor="let i of list">
+        <ion-row>
+
+            <ion-col col-3 style="text-align: center;margin: auto;">
+                <img style="max-width: 70% !important;" src="assets/img/notification.svg">
+
+            </ion-col>
+            <ion-col col-9 style="color: black;text-align: justify;">
+                <div style="color: maroon;font-weight: bold;">
+                    {{i['noti_title']}}
+                </div>
+                <div style="color: black;">
+                    {{i['noti_content']}}
+                </div>
+                <div>
+                    <p style="margin-top: 5px;float: right;font-size: 10px;color: maroon;font-weight: bold;"> View Details > </p>
+                </div>
+            </ion-col>
+
+        </ion-row>
+
+    </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

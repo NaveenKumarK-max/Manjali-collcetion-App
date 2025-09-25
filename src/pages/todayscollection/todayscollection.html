@@ -1,0 +1,188 @@
+<!--
+  Generated template for the TodayscollectionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+
+      <ion-row>
+          <ion-col style="margin: auto !important;margin-left: -10px !important;">
+              <ion-title style="font-size: small !important;text-transform:none !important;" >Today's Collection <span style="text-transform: capitalize;" *ngIf="showtime !='total'">{{showtime}}</span></ion-title>
+          </ion-col>
+          <ion-col *ngIf="showtime == 'total'" style="text-align: end !important;">
+              <img (click)="metal()" style="width: 39px !important;" src='assets/img/goldbarline.svg' />
+          </ion-col>
+      </ion-row>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-searchbar #mySearchbar (ionChange)="search()" [(ngModel)]="input" (ionBlur)="removeFocus()" placeholder="Search By Name or Mobile"  (click)="search()">
+    </ion-searchbar>
+  </ion-row>
+
+  <span style="text-align: center !important;justify-content: center !important;border-bottom: 1px solid !important;">
+  <ion-row >
+    <ion-col col-4 (click)="switch('total')"  [ngClass]="showtime == 'total' ? 'testchecked':'testunchecked'">Total</ion-col>
+    <ion-col col-4 (click)="switch('completed')"   [ngClass]="showtime == 'completed' ? 'testchecked':'testunchecked'">Completed</ion-col>
+    <ion-col col-4 (click)="switch('pending')"   [ngClass]="showtime == 'pending' ? 'testchecked':'testunchecked'">Pending</ion-col>
+  </ion-row>
+  <ion-row style="justify-content:space-around !important;justify-content: space-around !important;border-bottom: 1px solid;padding-bottom: 5px;">
+    <ion-col (click)="switch('total')"  [ngClass]="showtime == 'total' ? 'linechecked':'lineunchecked'" style="width: 50px !important;max-width: 50px !important;"></ion-col>
+    <ion-col (click)="switch('completed')"  [ngClass]="showtime == 'completed' ? 'linechecked':'lineunchecked'" style="width: 50px !important;max-width: 50px !important;"></ion-col>
+    <ion-col (click)="switch('pending')"  [ngClass]="showtime == 'pending' ? 'linechecked':'lineunchecked'" style="width: 50px !important;max-width: 50px !important;"></ion-col>
+  </ion-row>
+</span>
+
+<span *ngIf="showtime == 'total'">
+  <span *ngIf="total == undefined || total == '' || total == null">
+    <ion-row>
+      <ion-col class="
+      " style="text-align: center !important;font-size: 12px !important;font-weight: 600 !important;">
+        No Records Found
+      </ion-col>
+    </ion-row>
+  </span>
+
+
+
+  <span *ngIf="total != undefined && total != '' && total != null">
+  <ion-row *ngFor="let i of sortedArray; let i=index" style="background-color: #f4f3f1 !important;padding-top: 10px !important;padding-bottom: 10px !important;border-bottom: 1px solid !important;">
+    <ion-col col-8 style="margin:auto !important;" (click)="payDues(i['mobile'])">
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 16px !important;letter-spacing: .5px !important;">{{i['customer']}}</ion-row>
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 14px !important;letter-spacing: .5px !important;">{{i['mobile']}}</ion-row>
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 14px !important;letter-spacing: .5px !important;" *ngIf="i['payment_amount'] !=null && i['payment_amount'] !=''" >&#8377;{{i['payment_amount']}}</ion-row>
+    </ion-col>
+    <ion-col col-4>
+      <ion-row style="justify-content: end !important;margin-right: 10px !important;">
+        <button  class="
+
+        " ion-button class="button" style="background: none !important;box-shadow: none !important;height: 50px !important;">
+          <a *ngIf="i['mobile'] != ''" href="tel:{{i['mobile']}}">
+            <img  style="height: 50px !important;width: 65px !important;" src='../../assets/img/call.svg' />
+          </a>
+        </button>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</span>
+</span>
+
+<span *ngIf="showtime == 'pending'">
+  <span *ngIf="pending == undefined || pending == '' || pending == null">
+    <ion-row>
+      <ion-col class="
+
+      " style="text-align: center !important;font-size: 12px !important;font-weight: 600 !important;">
+        No Records Found
+      </ion-col>
+    </ion-row>
+  </span>
+  <span *ngIf="pending != undefined && pending != '' && pending != null">
+  <span  *ngFor="let i of sortedArray; let i=index" >
+  <ion-row  *ngIf="i.id_scheme_account !=null" style="background-color: #f4f3f1 !important;padding-top: 10px !important;padding-bottom: 10px !important;border-bottom: 1px solid !important;">
+    <ion-col col-8 style="margin:auto !important;" (click)="pay(i)">
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 14px !important;letter-spacing: .5px !important;" *ngIf="i['scheme_acc_number'] !=null && i['scheme_acc_number'] !=''" >{{i['scheme_acc_number']}}</ion-row>
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 14px !important;letter-spacing: .5px !important;" *ngIf="i['scheme_name'] !=null && i['scheme_name'] !=''">{{i['scheme_name']}}</ion-row>
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 16px !important;letter-spacing: .5px !important;">{{i['customer']}}</ion-row>
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 14px !important;letter-spacing: .5px !important;">{{i['mobile']}}</ion-row>
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 14px !important;letter-spacing: .5px !important;" *ngIf="i['payment_amount'] !=null && i['payment_amount'] !=''">{{i['payment_amount']}}</ion-row>
+      <!-- <ion-row class="NotoSerif-Regular" style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 14px !important;letter-spacing: .5px !important;">&#8377;{{i['payment_amount']}}</ion-row> -->
+    </ion-col>
+    <ion-col col-4>
+      <ion-row style="justify-content: end !important;margin-right: 10px !important;">
+        <button (click)="pendingPop(i)"  class="
+
+        " ion-button class="button" style="background: none !important;box-shadow: none !important;height: 50px !important;">
+            <img  style="height: 50px !important;width: 65px !important;" src='../../assets/img/pending.svg' />
+        </button>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</span>
+</span>
+</span>
+
+<span *ngIf="showtime == 'completed'">
+  <span *ngIf="completed == undefined || completed == '' || completed == null">
+    <ion-row>
+      <ion-col class="
+
+      " style="text-align: center !important;font-size: 12px !important;font-weight: 600 !important;">
+        No Records Found
+      </ion-col>
+    </ion-row>
+  </span>
+  <span *ngIf="completed != undefined && completed != '' && completed != null">
+  <ion-row *ngFor="let i of sortedArray; let i=index" style="background-color: #f4f3f1 !important;padding-top: 10px !important;padding-bottom: 10px !important;border-bottom: 1px solid !important;">
+    <ion-col col-8 style="margin:auto !important;">
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 14px !important;letter-spacing: .5px !important;" *ngIf="i['scheme_acc_number'] !=null && i['scheme_acc_number'] !=''">{{i['scheme_acc_number']}}</ion-row>
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 14px !important;letter-spacing: .5px !important;" *ngIf="i['scheme_name'] !=null && i['scheme_name'] !=''">{{i['scheme_name']}}</ion-row>
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 16px !important;letter-spacing: .5px !important;">{{i['customer']}}</ion-row>
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 14px !important;letter-spacing: .5px !important;">{{i['mobile']}}</ion-row>
+      <ion-row class="
+
+      " style="font-weight: 600 !important;margin-left: 10px !important;margin-bottom: 5px !important;font-size: 14px !important;letter-spacing: .5px !important;" *ngIf="i['payment_amount'] !=null && i['payment_amount'] !=''">{{i['payment_amount']}}</ion-row>
+    </ion-col>
+    <ion-col col-4>
+      <ion-row style="justify-content: end !important;margin-right: 10px !important;">
+        <button  class="
+
+        " ion-button class="button" style="background: none !important;box-shadow: none !important;height: 50px !important;">
+            <img  style="height: 50px !important;width: 65px !important;" src='../../assets/img/tick.svg' />
+        </button>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</span>
+</span>
+
+
+</ion-content>
+
+<ion-footer *ngIf="showtime == 'completed'" style="background-color: white !important;margin-bottom: 30px !important;border-top: 1px solid !important;padding-top: 10px !important;text-align: center !important;justify-content: center !important;">
+  <ion-row class="
+
+  " style="text-align: center !important;justify-content: center !important;font-size: 15px !important;font-weight: 600 !important;">
+    Total Amount : &#8377; {{ttamt}}
+  </ion-row>
+  <ion-row class="
+
+  " style="text-align: center !important;justify-content: center !important;font-size: 15px !important;font-weight: 600 !important;">
+  <ion-col class="
+
+  "> Cash : &#8377; {{cashttl}}</ion-col>
+  <ion-col class="
+
+  "> Online : &#8377; {{onlinettl}}</ion-col>
+  </ion-row>
+
+</ion-footer>

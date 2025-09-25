@@ -1,0 +1,110 @@
+<ion-content no-padding>
+
+  <ion-row>
+      <ion-col col-2></ion-col>
+      <ion-col col-8 class="grate" style="font-weight: 500 !important;text-align: center;color: #60340c !important;font-size: 20px !important;">Gold Rates</ion-col>
+      <ion-col col-1 style="font-size: 15px !important;margin: auto !important;color: #60340c !important;">
+        <ion-icon (click)="refresh()" name="refresh"></ion-icon>
+      </ion-col>
+      <ion-col col-1>      </ion-col>
+      <!-- <ion-col col-2>      </ion-col> -->
+  </ion-row>
+
+  <!-- <ion-row   style="margin-top: 20px !important;
+  margin-bottom: 20px !important;">
+    <ion-col col-6 style="text-align: center !important ;font-weight: bold !important;margin: auto !important;">
+        <ion-row class="
+
+        " style="justify-content: center !important;font-size: 16px !important;font-weight: 500 !important;color: #404041 !important;">
+            Gold Rate
+        </ion-row>
+        <ion-row *ngIf="display" class="
+
+        " style="justify-content: center !important;font-size: 18px !important;font-weight: 500 !important;color: #404041 !important;">
+            22K&nbsp;-&nbsp;<span style="color:#b08016 !important;" class="
+
+            ">{{grate}}<span style="font-size: 13px !important;"  class="
+
+            ">/gm</span></span>
+        </ion-row>
+        <ion-row *ngIf="!display" class="
+
+        " style="justify-content: center !important;font-size: 18px !important;font-weight: 500 !important;color: #404041 !important;">
+          <ion-spinner style=""></ion-spinner>
+      </ion-row>
+     </ion-col> -->
+     <!-- <ion-col col-1>
+        <ion-img style="height: 100px !important;background: none !important;" class="imgion" src="../../assets/img/line.svg"></ion-img>
+     </ion-col>
+     <ion-col col-5 style="text-align: center !important ;font-weight: bold !important;margin: auto !important;">
+        <ion-row class="
+
+        " style="justify-content: center !important;font-size: 16px !important;font-weight: 500 !important;color: #404041 !important;">
+            Silver Rate
+        </ion-row>
+        <ion-row *ngIf="display" style="justify-content: center !important;font-size: 18px !important;font-weight: 500 !important;">
+            <span style="color:#b08016 !important;" class="
+
+            ">{{srate}}<span style="font-size: 13px !important;" class="
+
+            ">/gm</span></span>
+        </ion-row>
+        <ion-row *ngIf="!display" style="justify-content: center !important;font-size: 18px !important;font-weight: 500 !important;">
+          <ion-spinner style=""></ion-spinner>
+        </ion-row>
+     </ion-col>
+</ion-row> -->
+
+<!-- <ion-row *ngIf="!display" style="justify-content: center !important;">
+  <ion-spinner style="    height: 90px !important;width: 80px !important;"></ion-spinner>
+</ion-row> -->
+
+
+<ion-row>
+
+  <ion-col col-6 style="text-align: center !important ;font-weight: bold !important;">
+      1 GRM (22KT)
+  </ion-col>
+  <ion-col col-6 style="text-align: center !important ;font-weight: bold !important;">
+      1 GRM
+  </ion-col>
+
+</ion-row>
+
+<ion-row *ngIf="display">
+
+  <ion-col col-6 style="text-align: center !important;font-weight: bold !important;">
+      GOLD &nbsp; <span style="font-size:17px;">&#8377;{{grate}}</span>
+  </ion-col>
+  <ion-col col-6 style="text-align: center !important;font-weight: bold !important;">
+      SILVER &nbsp; <span style="font-size:17px;">&#8377;{{srate}}</span>
+  </ion-col>
+
+
+
+</ion-row>
+<ion-row *ngIf="display">
+  <ion-col style="font-weight: bold;text-align: center !important;">
+      <span>Last Updated</span><br><br>
+      <span>{{timedate}}</span>
+  </ion-col>
+</ion-row>
+<ion-row *ngIf="!display" style="justify-content: center !important;">
+  <ion-spinner style="    height: 90px !important;width: 80px !important;"></ion-spinner>
+</ion-row>
+
+
+
+
+
+
+</ion-content>
+<ion-footer>
+  <ion-row text-center style="">
+      <ion-col style="text-align: -webkit-center !important;">
+          <button data-dismiss="modal" class="Cancel" aria-label="Close" (click)="closeModal($event)"  style="width: 50% !important;" full ion-button>
+    Close
+  </button>
+      </ion-col>
+  </ion-row>
+</ion-footer>

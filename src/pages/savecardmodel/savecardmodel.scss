@@ -1,0 +1,36 @@
+
+ion-modal.savecardmodel {
+   
+    .scroll-content {
+        padding: 0px !important;
+    }
+
+
+    @media (min-width: 300px) and (min-height: 500px) {
+        ion-backdrop {
+          visibility: visible;
+        }
+      }
+      .row{
+
+        padding:5px !important;
+      }
+    
+      .modal-wrapper {
+        position: absolute;
+        overflow: hidden;
+        max-width: 300px;
+        border-radius: 2px;
+        width: 100vw;
+        // height: 40vh;
+        max-height: 250px !important;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border: 0;
+        box-shadow: 0 16px 20px rgba(0,0,0,.4);
+        background-color: #fafafa;
+        // transform: translateY(-182px) !important;
+      }}

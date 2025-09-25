@@ -1,0 +1,128 @@
+<!--
+  Generated template for the CheckschemePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>New Purchase Plan</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <!--     <ion-row style="text-align: center !important;" *ngIf="currency != ''">
+        <ion-col>
+          <span class="clasifont">plan 1 </span><br>
+          <p style="font-size: 10px !important;">{{details['scheme_name']}}</p>
+        </ion-col>
+      </ion-row> -->
+
+    <ion-row style="text-align: center !important;">
+        <ion-col>
+            <p *ngIf="classimage['logo'] == '' || classimage['logo'] == null" style="font-size: 15px !important; word-wrap: break-word !important; color: black;">{{classimage['classification_name']}}</p>
+            <img *ngIf="classimage['logo'] != '' && classimage['logo'] != null" class="" style="width: 50% !important;" src="{{classimage['logo']}}" />
+        </ion-col>
+    </ion-row>
+
+    <ion-card *ngIf="currency != ''">
+        <!--     <ion-card-header>
+      {{details['scheme_name']}}
+    </ion-card-header> -->
+        <ion-card-content>
+            <ion-row>
+                <ion-col>
+                    Purchase Plan
+                </ion-col>
+                <ion-col>
+                    {{details['scheme_name']}}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    Duration
+                </ion-col>
+                <ion-col>
+                    {{details['total_installments']}} months
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    Monthly Advance
+                </ion-col>
+                <ion-col *ngIf="details['scheme_type'] == 0">
+                    <span [innerHTML]="currency.curr_symb_html"></span> {{details['amount']}}
+                </ion-col>
+                <ion-col *ngIf="details['scheme_type'] == 2">
+                    <span [innerHTML]="currency.curr_symb_html"></span> {{details['amount']}}
+                </ion-col>
+                <ion-col *ngIf="details['scheme_type'] == 1">
+                    {{details['max_weight']}} g
+                </ion-col>
+
+                <ion-col *ngIf="details['scheme_type'] == 3 && details['flx_denomintion'] != null && ( details['flexible_sch_type'] == 1 || details['flexible_sch_type'] == 2 ) ">
+                    Minimum of Rs.{{details['min_amount']}} or Its Multiplies of Rs.{{details['flx_denomintion'] !=null && details['flx_denomintion'] || 0 }}
+                </ion-col>
+
+                <ion-col *ngIf="details['scheme_type'] == 3 && details['flx_denomintion'] == null && details['one_time_premium'] == 0 && (details['flexible_sch_type'] == 1 || details['flexible_sch_type'] == 2) ">
+                    Min <span [innerHTML]="currency.curr_symb_html"></span> {{details['min_amount']}} Max <span [innerHTML]="currency.curr_symb_html"></span> {{details['max_amount']}}
+                </ion-col>
+
+                <ion-col *ngIf="details['scheme_type'] == 3 && details['one_time_premium'] == 0 && (details['flexible_sch_type'] == 3 || details['flexible_sch_type'] == 4) ">
+                    Min {{details['min_weight']}} g Max {{details['max_weight']}} g
+                </ion-col>
+
+
+            </ion-row>
+            <ion-row *ngIf="details['scheme_type'] != 3 && details['type'] != 0">
+                <ion-col>
+                    Total Payable
+                </ion-col>
+                <ion-col *ngIf="details['scheme_type'] == 0">
+                    <span [innerHTML]="currency.curr_symb_html"></span> {{total}}
+                </ion-col>
+                <ion-col *ngIf="details['scheme_type'] == 2">
+                    <span [innerHTML]="currency.curr_symb_html"></span> {{total}}
+                </ion-col>
+                <ion-col *ngIf="details['scheme_type'] == 1">
+                    {{total}} g
+                </ion-col>
+            </ion-row>
+
+            <ion-row *ngIf="details['type'] == 0">
+                <ion-col>
+                    Denominations
+                </ion-col>
+
+                <ion-col>
+                    <ion-row>
+                        <ion-col no-padding style="padding-right: 4px !important;" *ngFor="let w of wt">
+                            {{w['weight'] | number}}g
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-row *ngIf="currency['reg_existing'] == 0">
+        <ion-col>
+            <button ion-button (click)="join()" class="joinbtn">Join New</button>
+        </ion-col>
+    </ion-row>
+
+
+    <ion-row *ngIf="currency['reg_existing'] == 1">
+        <ion-col col-6>
+            <button ion-button (click)="join()" class="joinbtn">Join New</button>
+        </ion-col>
+        <ion-col col-6>
+            <button ion-button (click)="register(details)" class="joinbtn">Register Existing</button>
+        </ion-col>
+    </ion-row>
+
+</ion-content>

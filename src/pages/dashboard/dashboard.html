@@ -1,0 +1,40 @@
+<!-- <ion-list-header *ngIf="showSpinner == false" style="background: white;color:black;border-bottom: 1px solid #dedede;">
+        <ion-row>
+                <ion-col col-8 style="font-weight: bolder;white-space: initial;padding-top: 10px !important;">
+                        {{dashboarddata['customer']['firstname']}} - {{dashboarddata['customer']['mobile']}}
+
+                </ion-col>
+
+                <ion-col col-4>
+                        <ion-icon (click)="notify()" style="float: right;font-size: 25px !important;"
+                                name="notifications"></ion-icon>
+
+                        <ion-icon (click)="share()" style="float: right;font-size: 25px !important;" name="share">
+                        </ion-icon>
+                </ion-col>
+        </ion-row>
+
+</ion-list-header> -->
+
+
+<ion-row style="text-align: center;">
+       
+        <ion-col col-4 [ngClass]="animateClass" (click)="myscheme()">
+                <div style='text-align: center;'> <i style="font-size: xx-large;" class="fa fa-shopping-bag"
+                                aria-hidden="true"></i></div>
+        </ion-col>
+
+        <ion-col col-4 [ngClass]="animateClass" (click)="due()">
+                <div style='text-align: center;'>
+                        <ion-icon style="font-size: xx-large;" name="calendar"></ion-icon>
+                </div>
+        </ion-col>
+
+        <ion-col col-4 [ngClass]="animateClass" (click)="history()">
+                <div style='text-align: center;'>
+                        <ion-icon style="font-size: xx-large;" name="cash"></ion-icon>
+                </div>
+        </ion-col>
+
+</ion-row>
+

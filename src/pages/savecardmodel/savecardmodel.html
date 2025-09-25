@@ -1,0 +1,38 @@
+<!--
+  Generated template for the SavecardmodelPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content padding>
+
+
+  <ion-card  style="    padding: 10px !important;">
+      <ion-icon  style="float: right;" name="close" (click)="close()"></ion-icon>
+
+      <ion-label *ngIf="details.card_mode == 'CC'" style="color:red">{{details.issuingBank}} Credit Card</ion-label>
+      <ion-label *ngIf="details.card_mode == 'DC'" style="color:red">{{details.issuingBank}} Debit Card</ion-label>
+
+      <ion-label >{{details.name_on_card}}</ion-label>
+      <ion-label >{{details.card_no}}</ion-label>
+  
+      <ion-row  style="background: none !important;">
+        <ion-col>
+          <img *ngIf="details.card_brand=='MASTERCARD'" style="max-width: 40%;" src="assets/mastercard.png" />
+          <img *ngIf="details.card_brand=='VISA'" style="max-width: 40%;" src="assets/visa.png" />
+          <img *ngIf="details.card_brand=='MAESTRO'" style="max-width: 40%;" src="assets/maestro.png" />
+          <img *ngIf="details.card_brand=='AMEX'" style="max-width: 40%;" src="assets/americanexpress.png" />
+          <img *ngIf="details.card_brand=='DINERS'" style="max-width: 40%;" src="assets/diners.png" />
+        </ion-col>
+        <ion-col>
+          <ion-input style="    border-bottom: 1px solid lightgray !important;" [(ngModel)]="cvv" placeholder="Enter CVV"  type="number"></ion-input>
+  
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <button (click)="pay(details)"  style="background: #ffab08;" ion-button class="button-login" block color="dark" type="submit" >    
+      PAY NOW</button>
+</ion-content>

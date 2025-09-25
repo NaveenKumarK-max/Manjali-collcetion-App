@@ -1,0 +1,74 @@
+page-paymentotp {
+
+    .toolbar-background-md {
+        border-color: none;
+        background: transparent;
+    }
+    .button-outline-md-dark {
+        border-color: #ffffff;
+        color: #ffffff;
+        background-color: transparent;
+    }
+    .scroll-content {
+        /* background-color: transparent !important; */
+        padding: 0px !important;
+        margin-bottom: 0px !important;
+        background-size: cover;
+        /*    background-image: url(../assets/img/login_bg.png) !important; */
+        max-width: 100% !important;
+        max-height: 100% !important;
+        background-color: #fff !important;
+    }
+    .button-md {
+        text-transform: none;
+    }
+    .card-md {
+        opacity: 0.9;
+    }
+    ion-label {
+        white-space: normal !important;
+    }
+    .errMsg {
+        color: red !important;
+    }
+    .text-input-md {
+        margin: 0px !important;
+    }
+    .list-md .item-input:last-child {
+        border-bottom: none !important;
+    }
+    /*     .item-md {
+        padding-left: 0px !important;
+    } */
+    .item-md {
+        /* padding-left: 16px; */
+        padding: 0px !important;
+        border: 1px solid #f5dda1 !important;
+        margin-bottom: 20px !important;
+        border-radius: 5px !important;
+    }
+    .loginbg {
+        /*   background-image: url(../assets/img/login_bg.png) !important; */
+        background-size: cover;
+        max-width: 100% !important;
+        max-height: 100% !important;
+    }
+    .signup-col {
+        /*     margin: 0px 16px 0px 16px;
+        padding-bottom: 20px; */
+        margin: auto;
+        width: 50% !important;
+        text-align: -webkit-center !important;
+    }
+    /* webkit solution */
+     ::-webkit-input-placeholder {
+        text-align: left;
+        padding-left: 10px !important;
+    }
+    .item-input ion-input,
+    .item-input ion-textarea {
+        position: static;
+        padding-left: 12px !important;
+    }
+
+}

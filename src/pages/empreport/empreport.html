@@ -1,0 +1,357 @@
+<!--
+<ion-header>
+  <ion-toolbar>
+      <ion-row style="background: transparent !important;border: none !important;">
+          <ion-col col-2 (click)="goBack()">
+              <ion-buttons start>
+                  <button
+                      style="background: transparent !important;color: black !important;font-size: 20px !important;">
+                      <ion-icon name="arrow-round-back"></ion-icon>
+                  </button>
+              </ion-buttons>
+          </ion-col>
+          <ion-col col-8 style="margin: auto !important;">
+             <span style="font-weight: bold !important;text-transform: uppercase !important;font-size:initial !important;">Collection Reports</span>
+          </ion-col>
+          <ion-col col-2 style="margin: auto !important;">
+              <span style="font-weight: bold !important;text-transform: uppercase !important;font-size:initial !important;" end>V-{{app_version}}</span>
+          </ion-col>
+      </ion-row>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-navbar>
+
+      <ion-row>
+          <ion-col style="margin: auto !important;margin-left: -10px !important;">
+              <ion-title style="font-size: small !important;text-transform:none !important;" >Collection Reports</ion-title>
+          </ion-col>
+          <ion-col style="text-align: end !important;">
+              <span style="font-weight: bold !important;text-transform: uppercase !important;font-size:initial !important;
+
+              color: black !important;"  end>V-{{app_version}}</span>
+          </ion-col>
+      </ion-row>
+
+  </ion-navbar>
+            <ion-card class="coldata">
+              <ion-row>
+                <ion-col>
+                    <ion-row>
+                        <ion-col style="font-size: 12px !important;font-weight: 500; color: #404041 !important;">Agent Code</ion-col>
+                        <ion-col style="color: #404041 !important;" class="
+
+                        ">{{currentUser['employee']['id_employee']}}</ion-col>
+                    </ion-row>
+                    <ion-row >
+                        <ion-col style="font-size: 12px !important;font-weight: 500;color: #404041 !important;" class="
+
+                        ">Agent Name</ion-col>
+                        <ion-col style="color: #404041 !important;" class="
+
+                        ">{{currentUser['employee']['firstname']}}</ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="currentUser['employee']['branch_name'] != null" >
+                      <ion-col style="font-size: 12px !important;font-weight: 500;color: #404041 !important;" class="
+
+                      ">Branch</ion-col>
+                      <ion-col style="color: #404041 !important;" class="
+
+                      ">{{currentUser['employee']['branch_name']}}</ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-card>
+</ion-header>
+
+<ion-content padding>
+
+  <!-- <ion-card class="coldata" *ngIf="checknet == 'online'"> -->
+  <span class="coldata" *ngIf="checknet == 'online'">
+    <ion-row class="
+
+    " style="font-size: 11px !important;letter-spacing: 1px !important;justify-content: center !important;color: #e86e00 !important;margin-bottom: 15px;font-weight: bold;">Pick a Date Range</ion-row>
+    <!-- <ion-row  style="margin-top: 10px !important;">
+      <ion-col style="text-align: center;color: #e86e00 !important;font-size: 9px !important;" class="NotoSerif-Regular">Start Date</ion-col>
+      <ion-col style="text-align: center;color: #e86e00 !important;font-size: 9px !important;" class="NotoSerif-Regular">End Date</ion-col>
+  </ion-row> -->
+  <ion-row style="display: flex;justify-content: space-around;margin-bottom: 10px;">
+
+        <span style="text-align: -webkit-center !important;border: 1px solid #b26f07 !important;border-radius: 15px !important;width: 130px !important;height: 45px;">
+          <ion-row style="text-align: center;color: #e86e00 !important;font-size: 10px !important;justify-content: left !important;margin-left: 15px !important;margin-top: 5px;" class="
+
+          ">
+            Start Date
+          </ion-row>
+          <ion-row>
+            <ion-input style="font: size 12px !important;background:white !important;color: #404041 !important;font-weight: bold;height: 0px !important;margin-top: -10px !important;margin-left: 7px !important;" readonly="true" class="ion_datetime"[(ngModel)]="fromdate" displayFormat="DD-MM-YYYY" placeholder="From date" (tap)="fromdatefun()"></ion-input>
+          </ion-row>
+        </span>
+
+        <span style="text-align: -webkit-center !important;border: 1px solid #b26f07 !important;border-radius: 15px !important;width: 130px !important;height: 45px;">
+          <ion-row style="text-align: center;color: #e86e00 !important;font-size: 10px !important;justify-content: left !important;margin-left: 15px !important;margin-top: 5px;" class="
+
+          ">
+            End Date
+          </ion-row>
+          <ion-row>
+            <ion-input style="font: size 12px !important;background:white !important;color: #404041 !important;font-weight: bold;height: 0px !important;margin-top: -10px !important;margin-left: 7px !important;" readonly="true" class="ion_datetime"[(ngModel)]="todate" displayFormat="DD-MM-YYYY" placeholder="To date" (tap)="todatefun()"></ion-input>
+          </ion-row>
+
+      </span>
+    <!-- <ion-col col-1></ion-col>
+      <ion-col col-4 style="text-align: -webkit-center !important;border: 1px solid #b26f07 !important;border-radius: 15px !important;">
+        <ion-row style="text-align: center;color: #e86e00 !important;font-size: 9px !important;justify-content: left !important;" class="NotoSerif-Regular">
+          Start Date
+        </ion-row>
+        <ion-row>
+          <ion-input style="background:white !important;color: #404041 !important;font-weight: bold;" readonly="true" class="ion_datetime"[(ngModel)]="fromdate" displayFormat="DD-MM-YYYY" placeholder="From date" (focusin)="fromdatefun()"></ion-input>
+        </ion-row>
+      </ion-col>
+      <ion-col col-2></ion-col>
+
+      <ion-col col-4 style="text-align: -webkit-center !important;border: 1px solid #b26f07 !important;border-radius: 15px !important;">
+        <ion-row style="text-align: center;color: #e86e00 !important;font-size: 9px !important;justify-content: left !important;" class="NotoSerif-Regular">
+          End Date
+        </ion-row>
+        <ion-row>
+          <ion-input style="background:white !important;color: #404041 !important;font-weight: bold;" readonly="true" class="ion_datetime"[(ngModel)]="todate" displayFormat="DD-MM-YYYY" placeholder="To date" (focusin)="todatefun()"></ion-input>
+        </ion-row>
+      </ion-col>
+    <ion-col col-1></ion-col> -->
+
+  </ion-row>
+  <ion-row style="border: none !important;">
+    <ion-col style="text-align: -webkit-center !important; ">
+      <button (click)="onSubmit()" style="background: #b26f07 !important;color:#e1e1e1 !important;width: 125px !important;border-radius: 50px !important;text-transform: capitalize !important;" ion-button class="button-login
+
+      " block color="dark" [disabled]="buttondis">Find</button>
+    </ion-col>
+  </ion-row>
+</span>
+
+
+
+  <!-- <ion-card class="coldata">
+
+    <ion-row>
+      <ion-col>
+
+          <ion-row>
+              <ion-col style="font-size: 12px !important;font-weight: 500; color: #404041 !important;" class="NotoSerif-Regular">
+                  EMP ID
+              </ion-col>
+              <ion-col style="color: #404041 !important;" class="NotoSerif-Regular">
+                  {{currentUser['employee']['id_employee']}}
+              </ion-col>
+          </ion-row>
+          <ion-row >
+              <ion-col style="font-size: 12px !important;font-weight: 500;color: #404041 !important;" class="NotoSerif-Regular">
+                  Emp Name
+              </ion-col>
+              <ion-col style="color: #404041 !important;" class="NotoSerif-Regular">
+                {{currentUser['employee']['firstname']}}
+              </ion-col>
+          </ion-row>
+
+          <ion-row *ngIf="currentUser['employee']['branch_name'] != null" >
+            <ion-col style="font-size: 12px !important;font-weight: 500;color: #404041 !important;" class="NotoSerif-Regular">
+                Branch
+            </ion-col>
+            <ion-col style="color: #404041 !important;" class="NotoSerif-Regular">
+              {{currentUser['employee']['branch_name']}}
+            </ion-col>
+        </ion-row>
+
+      </ion-col>
+ </ion-row>
+  </ion-card> -->
+
+<!--     <form [formGroup]="dateForm" novalidate padding> -->
+  <!-- <ion-card class="coldata" *ngIf="checknet == 'online'">
+    <ion-row  style="margin-top: 10px !important;">
+      <ion-col style="text-align: center;color: #404041 !important;" class="NotoSerif-Regular">
+          From Date *
+      </ion-col>
+      <ion-col style="text-align: center;color: #404041 !important;" class="NotoSerif-Regular">
+          To Date *
+      </ion-col>
+  </ion-row>
+
+  <ion-row>
+      <ion-col style="text-align: -webkit-center !important;">
+
+          <ion-input style="background:white !important;color: #404041 !important;font-weight: bold;    border: 1px solid #b26f07 !important;border-radius: 15px !important;" readonly="true" class="ion_datetime"
+          [(ngModel)]="fromdate" displayFormat="DD-MM-YYYY" placeholder="From date" (focusin)="fromdatefun()"></ion-input>
+      </ion-col>
+      <ion-col style="text-align: -webkit-center !important;">
+
+        <ion-input style="background:white !important;color: #404041 !important;font-weight: bold;    border: 1px solid #b26f07 !important;border-radius: 15px !important;" readonly="true" class="ion_datetime"
+         [(ngModel)]="todate" displayFormat="DD-MM-YYYY" placeholder="To date" (focusin)="todatefun()"></ion-input>
+      </ion-col>
+  </ion-row>
+  <ion-row style="border: none !important;">
+    <ion-col style="text-align: -webkit-center !important;">
+      <button (click)="onSubmit()" style="background: #b26f07 !important;color:#e1e1e1 !important;width: 125px !important;border-radius: 50px !important;text-transform: capitalize !important;" ion-button class="button-login" block color="dark">
+            Find</button>
+    </ion-col>
+</ion-row>
+  </ion-card> -->
+<!-- </form> -->
+
+
+
+  <ion-item style="background-color: #ffffff   !important;" *ngIf="checknet == 'online'">
+    <ion-label style="padding-left: 21px !important;position: static;color: #525252;" class="
+
+    ">Select Mode</ion-label>
+    <ion-select class="
+
+    " style="border: none !important;background: transparent !important" [(ngModel)]="payment_mode" (ngModelChange)="checkInput(payment_mode)"  >
+        <ion-option value="all" class="
+
+        ">All</ion-option>
+        <ion-option value="CSH" class="
+
+        ">Cash</ion-option>
+ <!--        <ion-option value="DC">Debit Card</ion-option>
+        <ion-option value="CC">Credit Card</ion-option> -->
+        <ion-option value="online" class="
+
+        ">Online</ion-option>
+    </ion-select>
+</ion-item>
+
+<ion-row style="border: 1px solid #b26f07 !important; border-radius: 5px !important;" *ngIf="partial_filter == '1'">
+  <ion-col col-4 style="text-align: center !important;font-weight: 500 !important;" (click)="partialchange('all')" [ngClass]="partialfilter == 'all' ? 'segmentselect':'segmentunselect'">All</ion-col>
+  <ion-col col-4 style="text-align: center !important;font-weight: 500 !important;" (click)="partialchange('Monthly')" [ngClass]="partialfilter == 'Monthly' ? 'segmentselect':'segmentunselect'">Monthly</ion-col>
+  <ion-col col-4 style="text-align: center !important;font-weight: 500 !important;" (click)="partialchange('Daily')" [ngClass]="partialfilter == 'Daily' ? 'segmentselect':'segmentunselect'">Daily</ion-col>
+</ion-row>
+
+<ion-card class="coldata" *ngFor="let item of details2">
+
+  <ion-row>
+    <ion-col col-7>
+<!--         <ion-row>
+            <ion-col *ngIf="checknet == 'online'" class="
+
+            ">
+                <b>{{item['scheme_acc_number']}}</b>
+            </ion-col>
+            <ion-col *ngIf="checknet == 'offline'">
+              <b>{{item['scheme_acc_number']}}</b>
+          </ion-col>
+
+        </ion-row> -->
+
+        <ion-row>
+          <ion-col col-10 *ngIf="checknet == 'online'" class="">
+              <b>{{item['scheme_code']}} - {{item['scheme_acc_number']}}</b>
+          </ion-col>
+          <ion-col col-2 *ngIf="item['allow_print'] == 1" (click)="takeprint(item['pay_printable'])">
+            <ion-icon name="print"></ion-icon>
+        </ion-col>
+          <ion-col *ngIf="checknet == 'offline'">
+            <b>{{item['scheme_acc_number']}}</b>
+        </ion-col>
+      </ion-row>
+
+        <ion-row class="
+
+        ">
+            <ion-col style="font-size: 12px !important;font-weight: 500;">
+              Cus Name
+            </ion-col>
+            <ion-col *ngIf="checknet == 'online'">
+                {{item['customer']}}
+            </ion-col>
+            <ion-col *ngIf="checknet == 'offline'">
+              {{item['firstname']}}
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="item['scheme_type'] !=1" class="
+
+        ">
+            <ion-col style="font-size: 12px !important;font-weight: 500;">
+               Amount
+            </ion-col>
+            <ion-col>
+              &#8377; {{item['payment_amount']}}
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="item['scheme_type'] !=1" class="
+
+        ">
+          <ion-col style="font-size: 12px !important;font-weight: 500;">
+             Weight
+          </ion-col>
+          <ion-col *ngIf="checknet == 'online'">
+           {{item['payment_weight']}} g
+          </ion-col>
+          <ion-col *ngIf="checknet == 'offline'">
+            {{item['metal_weight']}} g
+           </ion-col>
+      </ion-row>
+
+    </ion-col>
+
+    <ion-col col-5>
+
+        <ion-row class="
+
+        ">
+            <ion-col style="font-size: 12px !important;font-weight: 500;">
+              Status
+            </ion-col>
+            <ion-col >
+                 {{item['payment_status']}}
+            </ion-col>
+       </ion-row>
+
+        <ion-row class="
+
+        ">
+            <ion-col style="font-size: 12px !important;font-weight: 500;">
+                Payment Mode
+            </ion-col>
+            <ion-col>
+               <!--  {{item['payment_mode']}} --> {{item['payment_type']}}
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="
+
+        ">
+          <ion-col style="font-size: 12px !important;font-weight: 500;">
+            Date & Time
+          </ion-col>
+          <ion-col *ngIf="checknet == 'online'">
+              {{item['payment_date']}}
+          </ion-col>
+          <ion-col *ngIf="checknet == 'offline'">
+            {{item['date_payment']}}
+        </ion-col>
+      </ion-row>
+
+    </ion-col>
+</ion-row>
+
+</ion-card>
+
+<ion-row *ngIf="details2 == ''" text-center>
+  <ion-col>
+    <p>{{errmsg}} </p>
+  </ion-col>
+</ion-row>
+
+</ion-content>
+
+<ion-footer style="background-color: #ffffff !important">
+  <ion-row>
+      <ion-col style="border:1px solid #9898985f ;font-weight: bold;color:#033d59;text-align: center !important;margin: auto;" >
+        Total Collection Amount :  {{totalAmt}}
+      </ion-col>
+  </ion-row>
+</ion-footer>

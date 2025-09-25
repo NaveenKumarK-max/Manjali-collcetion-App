@@ -1,0 +1,226 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-row>
+          <ion-col col-2 style="margin: auto !important;">
+              <ion-buttons start>
+                  <button (click)="goBack($event)" style="background: transparent !important;color: white !important;font-size: 20px !important;">
+              <ion-icon name="arrow-round-back"></ion-icon>
+          </button>
+              </ion-buttons>
+          </ion-col>
+          <ion-col col-7 style="margin: auto !important;">
+              <ion-title style="color: white !important;">My Plans</ion-title>
+          </ion-col>
+          <!-- (click)="paydue()" -->
+          <ion-col  col-3  > <!-- *ngIf="allowpay !=0 && allowpay != '0'"  -->
+              <!-- <button style="border: 3px solid white;" ion-button color='secondary'>Pay</button> -->
+          </ion-col>
+      </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list style="border-bottom:1px solid black !important;color:#60340c !important;">
+    <ion-item style="background-color: #f8f6f7 !important;" (click)="newscheme()">
+      <!-- <ion-thumbnail item-start>
+        <img style="width: 65px !important;height: 65px !important;" src="assets/img/no-img.png">
+      </ion-thumbnail> -->
+
+      <h2 class="
+
+      " style="text-transform: capitalize !important;color:#60340c  !important;text-align: center !important;"><ion-icon style="color: #60340c !important;font-size: 12px !important;margin: 0px !important;" name="add" item-start></ion-icon> Add New Savings Scheme</h2>
+      <!-- <p>Mobile No : 9488577633</p> -->
+      <!-- <button ion-button clear item-end>View</button> -->
+    </ion-item>
+  </ion-list>
+    <ion-row style="margin-bottom: -10px !important;">
+        <ion-col>
+            <ion-badge style="margin: 10px !important; border-radius: 15px !important;font-size: 10px !important;  background: #CC6611 !important;">
+                Active Accounts : {{myscheme.length}}</ion-badge>
+        </ion-col>
+    </ion-row>
+    <p style="text-align: center !important;" *ngIf="myscheme.length == 0">You don't have any Purchase Plan</p>
+
+
+    <ion-card *ngFor="let s of myscheme">
+
+        <ion-row *ngIf="s.one_time_premium == 0">
+            <ion-col col-6>
+                <ion-row>
+                    <ion-col *ngIf="s.chit_number != NULL">
+                        <b style="color:blueviolet">{{s['chit_number']}}</b>
+                    </ion-col>
+                    <ion-col *ngIf="s.chit_number == NULL" style="font-size: 12px !important;font-weight: 500;">
+                        <b>Not Allocated</b>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col style="font-size: 12px !important;font-weight: 500;">
+                        A/c Name
+                    </ion-col>
+                    <ion-col class="colstyle">
+                        {{s['account_name']}}
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf=" s.scheme_type == '0'|| s.scheme_type == '1' || s.scheme_type == '2' || ( s.scheme_type == '3' &&  (s.flexible_sch_type ==2 || s.flexible_sch_type !=3))">
+                    <ion-col style="font-size: 12px !important;font-weight: 500;">
+                        Paid Amount
+                    </ion-col>
+                    <ion-col class="colstyle">
+                        {{currency.currency.currency_symbol}} {{s.total_paid_amount-s.paid_gst}}
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="s.scheme_type == '1' || s.scheme_type == '2' || ( s.scheme_type == '3' &&  (s.flexible_sch_type ==2 || s.flexible_sch_type ==3 || s.flexible_sch_type ==7))">
+                    <ion-col style="font-size: 12px !important;font-weight: 500;">
+                        Paid Weight
+                    </ion-col>
+                    <ion-col class="colstyle">
+                        {{s['total_paid_weight']}} g
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+
+            <ion-col col-6>
+                <ion-row>
+                    <ion-col style="font-weight:bold;color: maroon;">
+                        <span style="font-size: 12px;" *ngIf="s.branch_settings == 1"> {{s['branch_name']}} </span> <span *ngIf="s.paid_installments == '0' && s.isPendingStatExist == false  && allowDelete == true && s.isPaymentExist == false">
+                <ion-icon style="color:red;float: right;" (click)="del(s.id_scheme_account)" name="trash"></ion-icon>
+              </span>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col style="font-size: 12px !important;font-weight: 500;">
+                        Payable
+                    </ion-col>
+                    <ion-col class="colstyle" *ngIf="s.scheme_type == '0'">
+                        {{currency.currency.currency_symbol}} {{s['payable'] | number}}
+                    </ion-col>
+                    <ion-col class="colstyle" *ngIf="s.scheme_type == '1'">
+                        {{s['payable']}} g
+                    </ion-col>
+                    <ion-col class="colstyle" *ngIf="s.scheme_type == '2'">
+                        {{currency.currency.currency_symbol}} {{s['payable'] | number}}
+                    </ion-col>
+
+
+                    <ion-col class="colstyle" *ngIf="(s.scheme_type == '3') && (s.flexible_sch_type == '1' || s.flexible_sch_type == '2' || s.flexible_sch_type == '5' || s.flexible_sch_type == '6' )">
+                        <span [innerHTML]="currency.currency.curr_symb_html"></span> {{s['max_amount']}}
+                    </ion-col>
+
+                    <ion-col class="colstyle" *ngIf="s.scheme_type == '3' && (s.flexible_sch_type == '3' || s.flexible_sch_type == '4' || s.flexible_sch_type == '7' )">
+                        {{s['max_weight']}} g
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col style="font-size: 12px !important;font-weight: 500;">
+                        Installments
+                    </ion-col>
+                    <ion-col class="colstyle">
+                        {{s['paid_installments']}}/{{s['total_installments']}}
+                    </ion-col>
+                </ion-row>
+                <ion-row style="float: right !important;">
+                  <ion-col (click)="more(s)" style="letter-spacing: 0.5px;color: #4835d9;">
+                    View Detail >
+                </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+
+
+
+        <ion-row *ngIf="s.one_time_premium == 1">
+            <ion-col col-7>
+                <ion-row>
+                    <ion-col *ngIf="s.chit_number != NULL" style="font-size: 12px !important;font-weight: 500;">
+                        <b>{{s['chit_number']}}</b>
+                    </ion-col>
+                    <ion-col *ngIf="s.chit_number == NULL" style="font-size: 12px !important;font-weight: 500;">
+                        <b>Not Allocated</b>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col style="font-size: 12px !important;font-weight: 500;">
+                        A/c Name
+                    </ion-col>
+                    <ion-col>
+                        {{s['account_name']}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col style="font-size: 12px !important;font-weight: 500;">
+                        Amt Paid
+                    </ion-col>
+                    <ion-col *ngIf="s.firstPayment_amt > 0">
+                       {{currency.currency.currency_symbol}} {{s.firstPayment_amt}}
+                    </ion-col>
+					<ion-col *ngIf="s.firstPayment_amt == 0 || s.firstPayment_amt == null">
+                       -
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="s.flexible_sch_type == 4">
+                    <ion-col style="font-size: 12px !important;font-weight: 500;">
+                        Weight
+                    </ion-col>
+                    <ion-col>
+                        {{s['fixed_wgt']}} g
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col col-5>
+				<ion-row>
+                    <ion-col style="font-weight:bold;color: maroon;">
+                        <span *ngIf="s.branch_settings == 1"> {{s['branch_name']}} </span> <span *ngIf="s.paid_installments == '0' && s.isPendingStatExist == false  && allowDelete == true && s.isPaymentExist == false">
+							<ion-icon style="color:red;float: right;" (click)="del(s.id_scheme_account)" name="trash"></ion-icon>
+						</span>
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="s.otp_price_fixing == 1">
+                    <ion-col style="font-size: 12px !important;font-weight: 500;">
+                        Rate Fixed
+                    </ion-col>
+                    <ion-col>
+                        {{s['fixed_metal_rate']}}
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="s.fixed_metal_rate != 'YES' && s.otp_price_fixing == 1 && s.firstPayment_amt > 0">
+                    <ion-col>
+                        <button (click)="Fixedrate(s)" style="background: linear-gradient(to top, #E8B76A,#FBD597) !important; color: #000 !important;" size="small" ion-button>
+								Fix Rate
+						</button>
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="s.fixed_metal_rate == 'YES' && s.otp_price_fixing == 1">
+                    <ion-col style="font-size: 12px !important;font-weight: 500;">
+                        Fixed Rate
+                    </ion-col>
+                    <ion-col>
+                        {{currency.currency.currency_symbol}} {{s['fixed_rate'] != '' && s['fixed_rate'] || 0 }}
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="s.otp_price_fixing == 0">
+                    <ion-col style="font-size: 12px !important;font-weight: 500;">
+                        Start Date
+                    </ion-col>
+                    <ion-col>
+                        {{s['start_date']}}
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="s.otp_price_fixing == 0">
+                    <ion-col style="font-size: 12px !important;font-weight: 500;">
+                        Maturity Date
+                    </ion-col>
+                    <ion-col>
+                        {{s['maturity_date']}}
+                    </ion-col>
+                </ion-row>
+                <ion-row style="float: right !important;">
+                  <ion-col (click)="more(s)" style="letter-spacing: 0.5px;color: #4835d9;">
+                    View Detail >
+                </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+</ion-content>

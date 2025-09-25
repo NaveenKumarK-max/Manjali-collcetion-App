@@ -1,0 +1,42 @@
+<!--
+  Generated template for the AboutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>About Us</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <div class="" style="text-align: center;">
+        <img style="margin-top: 2% !important;width: 70%;" src='assets/img/logo.svg' />
+    </div>
+    <p style="text-align:center;color: #f39c35 !important"><strong>Our Profile</strong></p>
+
+    <!--     <ion-row text-center>
+        <ion-col>
+            <img src='assets/img/shop.png' style="max-width: 75% !important;" />
+    </ion-col>
+</ion-row> -->
+<!--     <ion-card style="font-weight: normal;color: black;background: transparent !important;">
+        <ul style="line-height: 1.6 !important;">
+            <li>Shree Gokulam Jewels is a shopper’s paradise for exquisitely crafted & imported jewellery.</li>
+            <li>It is a fast emerging as preferred destination for quality jewellery showcasing the fine creations from classic designs that reflects the convergence of traditional collections to modern artistic Jewellery in  gold, diamond, platinum, silver and other precious stone ornaments with low labor charges & affordable low wastage cost.</li>
+            <li>We are familiar for our attractive light weight jewel design collections. You can even get the jewel customized by placing order according to specifications for those of your special occasions in life.</li>
+            <li>We are specialized in making customized antique and temple design ornaments.</li>
+            <li>We are experts in making gem stones, numerology stones and  birthday stones etc.</li>
+        </ul>
+    </ion-card> -->
+
+    <ion-card style="background: transparent !important;" *ngIf="aboutus !=''">
+        <ion-card-content>
+            <span class="termsfont" [innerHTML]="aboutus"></span>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+

@@ -1,0 +1,120 @@
+<!--
+  Generated template for the CustomPopupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title style="text-align: center"></ion-title>
+        <button style="background:#60340c !important;float:left;color: white;letter-spacing: 1px !important;border-radius: 50px !important;" ion-button class="
+        ">{{details['chit_number']}}</button>
+
+        <button style="background: #60340c !important;float:right;color: white;border-radius: 50px !important;letter-spacing: 1px !important;" (click)="close()" ion-button class="
+        ">Close</button>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <h5 style="text-align: center; color: #141143 !important;letter-spacing: 1px !important;" class="
+    ">Purchase Plan Detail</h5>
+    <ion-row *ngIf="details.branch_settings == 1 && details.branch_name != ''">
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            Branch
+        </ion-col>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            {{details.branch_name}}
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            A/c No
+        </ion-col>
+        <ion-col class="
+        " *ngIf="details.chit_number !=null" style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            {{details.chit_number}}
+        </ion-col>
+        <ion-col class="
+        " *ngIf="details.chit_number ==null" style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            Not Allocated
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            A/c Name
+        </ion-col>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            {{details.account_name}}
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            Joined
+        </ion-col>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            {{details.start_date}}
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            Paid Installments
+        </ion-col>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            {{details.paid_installments}}/{{details.total_installments}}
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            Total Paid Weight
+        </ion-col>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            {{details.total_paid_weight}} g
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;">
+            Payable
+        </ion-col>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;" *ngIf="details['scheme_type'] != 3 && details['scheme_type'] != 1">
+            <span [innerHTML]="currency.currency.curr_symb_html"></span>{{details['payable']}}
+        </ion-col>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;" *ngIf="details['scheme_type'] == 1">
+            {{details['payable']}} g
+        </ion-col>
+        <ion-col class="
+        " style="font-weight: bolder;background: white;color: #141143 !important;letter-spacing: 1px !important;" *ngIf="details['scheme_type'] == 3 &&  details['get_amt_in_schjoin'] != 1">
+            {{details.payable}}
+        </ion-col>
+    </ion-row>
+
+    <!--     <ion-card>
+        <ion-row>
+            <ion-col col-2 style="margin: auto !important;border: none !important;font-size: 20px !important;">
+                <ion-icon name="information-circle"></ion-icon>
+            </ion-col>
+            <ion-col col-10 style="text-align: justify !important;font-weight: bolder !important;margin: 0px !important;border: none !important;font-size: 14px !important;color: red !important;">
+                Transaction pending - Account number will be generated after First Payment realization
+            </ion-col>
+        </ion-row>
+    </ion-card> -->
+
+
+</ion-content>
